@@ -2,7 +2,7 @@ const travelDuration = document.getElementById('travelduration')
 const pathLength = document.getElementById('pathlength')
 const travelType = document.getElementById('traveltype')
 const travelSpeed = document.getElementById('travelspeed')
-const customSpeed = document.getElementById('customspeed')
+const customSpeed = document.getElementById('customtravelspeed')
 
 const undergroundChecksbox = [document.getElementById('checkroad'), document.getElementById('checkdirtroad'), document.getElementById('checkgras'), document.getElementById('checkforest'), document.getElementById('checkjungel'), document.getElementById('checkdesert'), document.getElementById('checkswamp'), document.getElementById('checksnow'), document.getElementById('checkmountain'), document.getElementById('checkextrememountain')]
 const undergroundPercent = [document.getElementById('percentroad'), document.getElementById('percentdirtroad'), document.getElementById('percentgras'), document.getElementById('percentforest'), document.getElementById('percentjungel'), document.getElementById('percentdesert'), document.getElementById('percentswamp'), document.getElementById('percentsnow'), document.getElementById('percentmountain'), document.getElementById('percentextrememountain')]
@@ -25,12 +25,13 @@ for(let i = 0; i < undergroundChecksbox.length; i++){
 //Nach Reise geschwindigkeit
 travelSpeed.addEventListener('change', () =>{
   if(travelSpeed.value == 'custom'){
-    document.getElementById('customspeed').style.display = 'inline';
+    document.getElementById('labelcustomspeed').style.display = 'inline';
   }else{
-    document.getElementById('customspeed').style.display = 'none';
+    document.getElementById('labelcustomspeed').style.display = 'none';
   }
 })
 
+//Input Test
 function checkForInput(){
   if(travelDuration.value > 24 || travelDuration.value < 0 || !travelDuration.value){
     console.error('Reisedauer überprüfen')
@@ -38,11 +39,11 @@ function checkForInput(){
   }
   if(pathLength.value <= 0){
     console.error('Es gibt keine negative Länge')
-    return 'Länge der Wegen kann nicht sein'
+    return 'Länge der Weges kann nicht sein'
   }
 
   if(travelSpeed.value == 'custom'){
-    if(isNaN(parseInt(customSpeed))){
+    if(isNaN(parseInt(customSpeed.value))){
       console.error('Gib ne Reisegschwindigkeit ein')
       return('Geschwindigkeit kann nicht sein')
     }
@@ -65,11 +66,12 @@ function checkForInput(){
   return 'passt'
 }
 
+//Zusammenfügen aller funktionen
 function berechnen(){
   let input = checkForInput()
   if(input !== 'passt'){
     solution.textContent = input
   }else{
-    solution.textContent = 'richtigö'
+    solution.textContent = 'richtig'
   }
 }

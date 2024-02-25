@@ -10,7 +10,7 @@
         <input type="number" id="travelduration" name="travelduration"> h<br>
 
         <label for="pathlength">Länge des Weges (in Kilometern):</label>
-        <input type="number" id="pathlength" name="pathlength"> km<br>
+        <input type="number" id="pathlength" name="pathlength" disabled> km<br>
 
         <label for="traveltype">Reise Art:</label>
         <select id="traveltype" name="traveltype">
@@ -35,35 +35,41 @@
 
         <fieldset>
             <legend>Untergrund:</legend>
+            <label for="calctype">Art der Rechnung:</label>
+            <select id="calctype" name="calctype">
+                <option value="km">Kilometer km</option>
+                <option value="percent">Percent %</option>
+            </select><br>
+
             <label>
-                <input type="checkbox" name="untergrund" id="checkroad"> Straße befestigt <input type="number" name="Percentage" id="percentroad" disabled> % <p style="display: inline;" id="undergroundtimeroad"></p>
+                <input type="checkbox" name="untergrund" id="checkroad"> Straße befestigt <input type="number" name="Percentage" id="percentroad" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimeroad"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checkdirtroad"> Unbefestigte Wege <input type="number" name="Percentage" id="percentdirtroad" disabled> % <p style="display: inline;" id="undergroundtimedirtroad"></p>
+                <input type="checkbox" name="untergrund" id="checkdirtroad"> Unbefestigte Wege <input type="number" name="Percentage" id="percentdirtroad" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimedirtroad"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checkgras"> Grasland <input type="number" name="Percentage" id="percentgras" disabled> % <p style="display: inline;" id="undergroundtimegras"></p>
+                <input type="checkbox" name="untergrund" id="checkgras"> Grasland <input type="number" name="Percentage" id="percentgras" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimegras"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checkforest"> Wald <input type="number" name="Percentage" id="percentforest" disabled> % <p style="display: inline;" id="undergroundtimeforest"></p>
+                <input type="checkbox" name="untergrund" id="checkforest"> Wald <input type="number" name="Percentage" id="percentforest" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimeforest"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checkjungel"> Jungel <input type="number" name="Percentage" id="percentjungel" disabled> % <p style="display: inline;" id="undergroundtimejungel"></p>
+                <input type="checkbox" name="untergrund" id="checkjungel"> Jungel <input type="number" name="Percentage" id="percentjungel" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimejungel"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checkdesert"> Wüste <input type="number" name="Percentage" id="percentdesert" disabled> % <p style="display: inline;" id="undergroundtimedesert"></p>
+                <input type="checkbox" name="untergrund" id="checkdesert"> Wüste <input type="number" name="Percentage" id="percentdesert" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimedesert"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checkswamp"> Sumpf <input type="number" name="Percentage" id="percentswamp" disabled> % <p style="display: inline;" id="undergroundtimeswamp"></p>
+                <input type="checkbox" name="untergrund" id="checkswamp"> Sumpf <input type="number" name="Percentage" id="percentswamp" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimeswamp"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checksnow"> Schnee <input type="number" name="Percentage" id="percentsnow" disabled> % <p style="display: inline;" id="undergroundtimesnow"></p>
+                <input type="checkbox" name="untergrund" id="checksnow"> Schnee <input type="number" name="Percentage" id="percentsnow" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimesnow"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checkmountain"> Berge <input type="number" name="Percentage" id="percentmountain" disabled> % <p style="display: inline;" id="undergroundtimemountain"></p>
+                <input type="checkbox" name="untergrund" id="checkmountain"> Berge <input type="number" name="Percentage" id="percentmountain" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimemountain"></p>
             </label><br>
             <label>
-                <input type="checkbox" name="untergrund" id="checkextrememountain"> Extreme Berge <input type="number" name="Percentage" id="percentextrememountain" disabled> % <p style="display: inline;" id="undergroundtimeextrememountain"></p>
+                <input type="checkbox" name="untergrund" id="checkextrememountain"> Extreme Berge <input type="number" name="Percentage" id="percentextrememountain" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimeextrememountain"></p>
             </label><br>
         </fieldset>
 

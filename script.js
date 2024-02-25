@@ -4,6 +4,8 @@ const travelType = document.getElementById('traveltype')
 const travelSpeed = document.getElementById('travelspeed')
 const customSpeed = document.getElementById('customtravelspeed')
 
+const unit = document.querySelectorAll('.unit')
+const calcType = document.getElementById('calctype')
 const undergroundChecksbox = [document.getElementById('checkroad'), document.getElementById('checkdirtroad'), document.getElementById('checkgras'), document.getElementById('checkforest'), document.getElementById('checkjungel'), document.getElementById('checkdesert'), document.getElementById('checkswamp'), document.getElementById('checksnow'), document.getElementById('checkmountain'), document.getElementById('checkextrememountain')]
 const undergroundPercent = [document.getElementById('percentroad'), document.getElementById('percentdirtroad'), document.getElementById('percentgras'), document.getElementById('percentforest'), document.getElementById('percentjungel'), document.getElementById('percentdesert'), document.getElementById('percentswamp'), document.getElementById('percentsnow'), document.getElementById('percentmountain'), document.getElementById('percentextrememountain')]
 const undergroundPercentvalue = [1, 0.85, 0.75, 0.65, 0.45, 0.55, 0.35, 0.45, 0.65, 0.25]
@@ -33,13 +35,31 @@ travelSpeed.addEventListener('change', () =>{
   }
 })
 
+calcType.addEventListener('change', () => {
+  switch(calcType.value){
+    case 'percent':
+      pathLength.removeAttribute('disabled')
+      unit.forEach((element) =>{
+        element.innerHTML = '%'
+      })
+      break;
+    case 'km':
+      pathLength.setAttribute('disabled', true)
+      unit.forEach((element) =>{
+        element.innerHTML = 'km'
+      })
+      break;
+  }
+})
+
 //Input Test
 function checkForInput(){
   if(travelDuration.value > 24 || travelDuration.value < 0 || !travelDuration.value){
     console.error('Reisedauer überprüfen')
     return 'Reisedauer pro Tag kann nicht sein'
   }
-  if(pathLength.value <= 0){
+
+  if(pathLength.value <= 0 && calcType.value == 'percent'){
     console.error('Es gibt keine negative Länge')
     return 'Länge der Weges kann nicht sein'
   }
@@ -61,7 +81,7 @@ function checkForInput(){
       foo += parseFloat(undergroundPercent[i].value)
     }
   }
-  if(foo!=100){
+  if(foo!=100 && calcType.value == 'percent'){
     console.error('Untergrund muss 100% sein')
     return 'Untergrund muss 100% sein'
   }
@@ -96,8 +116,16 @@ function calculate(){
     undergroundHours[i].innerHTML = ''
 
     if(undergroundChecksbox[i].checked && !isNaN(parseFloat(undergroundPercent[i].value))){
-      undergroundLength[i] = parseFloat(pathLength.value * (undergroundPercent[i].value/100))
-      undergroundDuration[i] = undergroundLength[i] / undergroundSpeeds[i]
+      switch(calcType.value){
+        case 'percent':
+          undergroundLength[i] = parseFloat(pathLength.value * (undergroundPercent[i].value/100))
+          undergroundDuration[i] = undergroundLength[i] / undergroundSpeeds[i]
+          break;
+        case 'km':
+          undergroundDuration[i]= undergroundPercent[i].value / undergroundSpeeds[i]
+          break;
+      }
+      
       undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Tage')
       foo += parseFloat(undergroundDuration[i])
     }

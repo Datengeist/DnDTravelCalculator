@@ -6,10 +6,11 @@ const customSpeed = document.getElementById('customtravelspeed')
 
 const unit = document.querySelectorAll('.unit')
 const calcType = document.getElementById('calctype')
-const undergroundChecksbox = [document.getElementById('checkroad'), document.getElementById('checkdirtroad'), document.getElementById('checkgras'), document.getElementById('checkforest'), document.getElementById('checkjungel'), document.getElementById('checkdesert'), document.getElementById('checkswamp'), document.getElementById('checksnow'), document.getElementById('checkmountain'), document.getElementById('checkextrememountain')]
-const undergroundPercent = [document.getElementById('percentroad'), document.getElementById('percentdirtroad'), document.getElementById('percentgras'), document.getElementById('percentforest'), document.getElementById('percentjungel'), document.getElementById('percentdesert'), document.getElementById('percentswamp'), document.getElementById('percentsnow'), document.getElementById('percentmountain'), document.getElementById('percentextrememountain')]
-const undergroundPercentvalue = [1, 0.85, 0.75, 0.65, 0.45, 0.55, 0.35, 0.45, 0.65, 0.25]
-const undergroundHours = [document.getElementById('undergroundtimeroad'), document.getElementById('undergroundtimedirtroad'), document.getElementById('undergroundtimegras'), document.getElementById('undergroundtimeforest'), document.getElementById('undergroundtimejungel'), document.getElementById('undergroundtimedesert'), document.getElementById('undergroundtimeswamp'), document.getElementById('undergroundtimesnow'), document.getElementById('undergroundtimemountain'), document.getElementById('undergroundtimeextrememountain')]
+const customModifierInput = document.getElementById('custommodifier')
+const undergroundChecksbox = [document.getElementById('checkroad'), document.getElementById('checkdirtroad'), document.getElementById('checkgras'), document.getElementById('checkforest'), document.getElementById('checkjungel'), document.getElementById('checkdesert'), document.getElementById('checkswamp'), document.getElementById('checksnow'), document.getElementById('checkmountain'), document.getElementById('checkextrememountain'), document.getElementById('checkcustom')]
+const undergroundPercent = [document.getElementById('percentroad'), document.getElementById('percentdirtroad'), document.getElementById('percentgras'), document.getElementById('percentforest'), document.getElementById('percentjungel'), document.getElementById('percentdesert'), document.getElementById('percentswamp'), document.getElementById('percentsnow'), document.getElementById('percentmountain'), document.getElementById('percentextrememountain'), document.getElementById('percentcustom')]
+const undergroundPercentvalue = [1, 0.85, 0.75, 0.65, 0.45, 0.55, 0.35, 0.45, 0.65, 0.25, 1]
+const undergroundHours = [document.getElementById('undergroundtimeroad'), document.getElementById('undergroundtimedirtroad'), document.getElementById('undergroundtimegras'), document.getElementById('undergroundtimeforest'), document.getElementById('undergroundtimejungel'), document.getElementById('undergroundtimedesert'), document.getElementById('undergroundtimeswamp'), document.getElementById('undergroundtimesnow'), document.getElementById('undergroundtimemountain'), document.getElementById('undergroundtimeextrememountain'), document.getElementById('undergroundtimecustom')]
 
 const calculateButton = document.getElementById('buttoncalculate')
 
@@ -74,16 +75,26 @@ function checkForInput(){
   let foo = 0;
   for(let i = 0; i < undergroundChecksbox.length; i++){
     if(undergroundChecksbox[i].checked && !isNaN(parseFloat(undergroundPercent[i].value))){
-      if(undergroundPercent[i].value<0){
+      if(undergroundPercent[i].value<0 && calcType.value === 'percent'){
         console.error('kann keine -% geben')
         return 'kann keine -% geben'
       }
+      if(undergroundPercent[i].value<0 && calcType.value === 'km'){
+        console.error('kann keine -km geben')
+        return 'kann keine -km geben'
+      }
+
       foo += parseFloat(undergroundPercent[i].value)
     }
   }
   if(foo!=100 && calcType.value == 'percent'){
     console.error('Untergrund muss 100% sein')
     return 'Untergrund muss 100% sein'
+  }
+  
+  if(undergroundChecksbox[10].checked && customModifierInput.value <= 0){
+    console.error('Modifier muss größer als 0% sein')
+    return 'Modifier muss größer als 0% sein'
   }
   return 'passt'
 }
@@ -111,7 +122,12 @@ function calculate(){
   let undergroundDuration = []
   let foo = 0;
   for(let i = 0; i < undergroundChecksbox.length; i++){
-    undergroundSpeeds[i] = speed * undergroundPercentvalue[i]
+    if(undergroundChecksbox[i].getAttribute('id') === 'checkcustom'){
+      undergroundSpeeds[i] = speed * parseFloat(customModifierInput.value/100)
+    }else{
+      undergroundSpeeds[i] = speed * undergroundPercentvalue[i]
+    }
+    
 
     undergroundHours[i].innerHTML = ''
 

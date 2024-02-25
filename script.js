@@ -6,6 +6,8 @@ const customSpeed = document.getElementById('customtravelspeed')
 
 const undergroundChecksbox = [document.getElementById('checkroad'), document.getElementById('checkdirtroad'), document.getElementById('checkgras'), document.getElementById('checkforest'), document.getElementById('checkjungel'), document.getElementById('checkdesert'), document.getElementById('checkswamp'), document.getElementById('checksnow'), document.getElementById('checkmountain'), document.getElementById('checkextrememountain')]
 const undergroundPercent = [document.getElementById('percentroad'), document.getElementById('percentdirtroad'), document.getElementById('percentgras'), document.getElementById('percentforest'), document.getElementById('percentjungel'), document.getElementById('percentdesert'), document.getElementById('percentswamp'), document.getElementById('percentsnow'), document.getElementById('percentmountain'), document.getElementById('percentextrememountain')]
+const undergroundPercentvalue = [1, 0.85, 0.75, 0.65, 0.45, 0.55, 0.35, 0.45, 0.65, 0.25]
+const undergroundHours = [document.getElementById('undergroundtimeroad'), document.getElementById('undergroundtimedirtroad'), document.getElementById('undergroundtimegras'), document.getElementById('undergroundtimeforest'), document.getElementById('undergroundtimejungel'), document.getElementById('undergroundtimedesert'), document.getElementById('undergroundtimeswamp'), document.getElementById('undergroundtimesnow'), document.getElementById('undergroundtimemountain'), document.getElementById('undergroundtimeextrememountain')]
 
 const calculateButton = document.getElementById('buttoncalculate')
 
@@ -51,12 +53,12 @@ function checkForInput(){
 
   let foo = 0;
   for(let i = 0; i < undergroundChecksbox.length; i++){
-    if(undergroundChecksbox[i].checked && !isNaN(parseInt(undergroundPercent[i].value))){
+    if(undergroundChecksbox[i].checked && !isNaN(parseFloat(undergroundPercent[i].value))){
       if(undergroundPercent[i].value<0){
         console.error('kann keine -% geben')
         return 'kann keine -% geben'
       }
-      foo += parseInt(undergroundPercent[i].value)
+      foo += parseFloat(undergroundPercent[i].value)
     }
   }
   if(foo!=100){
@@ -66,12 +68,60 @@ function checkForInput(){
   return 'passt'
 }
 
+function calculate(){
+  let speed
+  switch(travelSpeed.value){
+    case 'slow':  speed= parseFloat(3.2); break;
+    case 'normal': speed = parseFloat(4.8); break;
+    case 'fast': speed = parseFloat(6.4); break;
+    case 'custom': speed= parseFloat(customSpeed.value); break;
+  }
+
+  switch(travelType.value){
+    case 'fuss_leicht':  speed *= 1; break;
+    case 'fuss_schwer': speed *= 0.9; break;
+    case 'pferd_leicht': speed *= 1.5; break;
+    case 'pferd_schwer': speed *= 1.4; break;
+    case 'kutsche_klein': speed *= 1.3; break;
+    case 'kutsche_gross': speed *= 1.2; break;
+  }
+  
+  let undergroundSpeeds = []
+  let undergroundLength = []
+  let undergroundDuration = []
+  let foo = 0;
+  for(let i = 0; i < undergroundChecksbox.length; i++){
+    undergroundSpeeds[i] = speed * undergroundPercentvalue[i]
+
+    undergroundHours[i].innerHTML = ''
+
+    if(undergroundChecksbox[i].checked && !isNaN(parseFloat(undergroundPercent[i].value))){
+      undergroundLength[i] = parseFloat(pathLength.value * (undergroundPercent[i].value/100))
+      undergroundDuration[i] = undergroundLength[i] / undergroundSpeeds[i]
+      undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Tage')
+      foo += parseFloat(undergroundDuration[i])
+    }
+  }
+  let dcString = ''
+  if(travelDuration.value > 8){
+    for(let i = 1; i <= (travelDuration.value - 8); i++){
+      if(i==1){
+        dcString += 'Für '+(i+8)+' Stunden an Reisezeit mach ein DC '+(i+10)+' Con rettungswurf oder erhalte einen Punkt Erschöpfung.<br>'
+      }else{
+        dcString += 'Für '+(i+8)+' Stunden an Reisezeit mach ein weiteren DC '+(i+10)+' Con rettungswurf oder erhalte ein weiteren Punkt Erschöpfung.<br>'
+      }
+      
+    }
+  }
+  return ('Gesamtdauer der Reise: ' + parseFloat(foo.toFixed(2)) + ' h, was ' + parseFloat((foo/travelDuration.value).toFixed(2)) + ' Tage sind. <br>'+dcString)
+}
+
 //Zusammenfügen aller funktionen
 function berechnen(){
   let input = checkForInput()
   if(input !== 'passt'){
-    solution.textContent = input
+    solution.innerHTML = input
   }else{
-    solution.textContent = 'richtig'
+    solution.innerHTML = calculate()
   }
 }

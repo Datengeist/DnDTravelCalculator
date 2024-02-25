@@ -100,9 +100,9 @@ function calculate(){
   switch(travelType.value){
     case 'fuss_leicht':  speed *= 1; break;
     case 'fuss_schwer': speed *= 0.9; break;
-    case 'pferd_leicht': speed *= 1.5; break;
-    case 'pferd_schwer': speed *= 1.4; break;
-    case 'kutsche_klein': speed *= 1.3; break;
+    case 'pferd_leicht': speed *= 2.5; break;
+    case 'pferd_schwer': speed *= 1.9; break;
+    case 'kutsche_klein': speed *= 1.5; break;
     case 'kutsche_gross': speed *= 1.2; break;
   }
   

@@ -131,19 +131,48 @@ function calculate(){
 
     undergroundHours[i].innerHTML = ''
 
-    if(undergroundChecksbox[i].checked && !isNaN(parseFloat(undergroundPercent[i].value))){
-      switch(calcType.value){
-        case 'percent':
-          undergroundLength[i] = parseFloat(pathLength.value * (undergroundPercent[i].value/100))
-          undergroundDuration[i] = undergroundLength[i] / undergroundSpeeds[i]
-          break;
-        case 'km':
-          undergroundDuration[i]= undergroundPercent[i].value / undergroundSpeeds[i]
-          break;
+    let numbers = undergroundPercent[i].value.split('+')
+    console.log(numbers)
+
+    if(numbers.length > 1){
+      let multipleSolutions =[];
+      undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt:')
+      for(let j = 0; j < numbers.length; j++){
+        if(undergroundChecksbox[i].checked && !isNaN(parseFloat(numbers[j]))){
+          switch(calcType.value){
+            case 'percent':
+              undergroundLength[i] = parseFloat(pathLength.value * (numbers[j]/100))
+              multipleSolutions[j] = undergroundLength[i] / undergroundSpeeds[i]
+              break;
+            case 'km':
+              multipleSolutions[j]= numbers[j] / undergroundSpeeds[i]
+              break;
+          }
+          undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (parseFloat((multipleSolutions[j]/travelDuration.value).toFixed(2)) + ' Tage (' + parseFloat(multipleSolutions[j].toFixed(2)) + 'h)')
+          if(j+1 < numbers.length){
+            undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (' + ' )
+          }
+          
+          foo += parseFloat(multipleSolutions[j])
+        }
       }
+      undergroundLength[i] = multipleSolutions.reduce((a, b) => a+b, 0)
+      undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (' = ' + (multipleSolutions.reduce((a, b) => a+b, 0)/travelDuration.value).toFixed(2) + 'Tage (' + multipleSolutions.reduce((a, b) => a+b, 0).toFixed(2) + 'h)');
+    }else{
+      if(undergroundChecksbox[i].checked && !isNaN(parseFloat(undergroundPercent[i].value))){
+        switch(calcType.value){
+          case 'percent':
+            undergroundLength[i] = parseFloat(pathLength.value * (undergroundPercent[i].value/100))
+            undergroundDuration[i] = undergroundLength[i] / undergroundSpeeds[i]
+            break;
+          case 'km':
+            undergroundDuration[i]= undergroundPercent[i].value / undergroundSpeeds[i]
+            break;
+        }
       
-      undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Tage')
-      foo += parseFloat(undergroundDuration[i])
+        undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Tage')
+        foo += parseFloat(undergroundDuration[i])
+      }
     }
   }
   let dcString = ''

@@ -1,3 +1,6 @@
+const darkMode = document.getElementById('darkMode')
+const darkElements = Array.from(document.getElementsByClassName('darkMode'))
+
 const travelDuration = document.getElementById('travelduration')
 const pathLength = document.getElementById('pathlength')
 const travelType = document.getElementById('traveltype')
@@ -16,13 +19,45 @@ const calculateButton = document.getElementById('buttoncalculate')
 
 const solution = document.getElementById('solution')
 
+window.onload = function() {
+  alert("Willommen beim DnD Travel Calculator\nFür die genauen Modifier informationen bitte einmal über das jeweilige Element hovern");
+}
+
 //Nach Checkboxen Testen
+darkMode.addEventListener("change", function(){
+  darkElements.forEach(e => {
+    e.classList.toggle('darkMode')
+  });
+})
+
+travelType.addEventListener("change", function(){
+  travelType.title = "Modifier x"
+  switch(travelType.value){
+    case 'fuss_leicht' : travelType.title+="1"; break;
+    case 'fuss_schwer' : travelType.title+="0.9";break;
+    case 'pferd_leicht' : travelType.title+="2.5";break;
+    case 'pferd_schwer' : travelType.title+="1.9";break;
+    case 'kutsche_klein' : travelType.title+="1.5";break;
+    case 'kutsche_gross' : travelType.title+="1.2";break;
+  }
+  
+})
+
 for(let i = 0; i < undergroundChecksbox.length; i++){
   undergroundChecksbox[i].addEventListener('change', () => {
     if (undergroundChecksbox[i].checked) {
       undergroundPercent[i].removeAttribute('disabled');
+      switch(calcType.value){
+        case 'percent':
+          unit[i].innerHTML = "%"
+          break
+        case 'km':
+          unit[i].innerHTML = "km"
+          break
+      }
     } else {
       undergroundPercent[i].setAttribute('disabled', true); 
+      unit[i].innerHTML = ""
     }
   });
 }
@@ -40,15 +75,9 @@ calcType.addEventListener('change', () => {
   switch(calcType.value){
     case 'percent':
       pathLength.removeAttribute('disabled')
-      unit.forEach((element) =>{
-        element.innerHTML = '%'
-      })
       break;
     case 'km':
       pathLength.setAttribute('disabled', true)
-      unit.forEach((element) =>{
-        element.innerHTML = 'km'
-      })
       break;
   }
 })

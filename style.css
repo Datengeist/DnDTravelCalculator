@@ -1,0 +1,39 @@
+p{
+    display: inline-block;
+    width: 200px;
+    height: 0px;
+    margin: 0px;
+}
+input:disabled{
+    display: none;
+}
+input:enabled{
+    display: inline;
+}
+
+body.darkMode {
+    background-color: rgb(26, 26, 26);
+    color: #EAEAEA;
+}
+
+body.darkMode input {
+    border: none;
+    background-color: rgb(52, 52, 52);
+    color: #EAEAEA;
+}
+
+body.darkMode input:focus {
+    border: none;
+    background-color: rgba(52, 52, 52);
+    color: #EAEAEA;
+}
+
+body.darkMode select {
+    background-color: rgb(52, 52, 52);
+    color: #EAEAEA;
+}
+
+body.darkMode button {
+    background-color: rgb(52, 52, 52);
+    color: #EAEAEA;
+}

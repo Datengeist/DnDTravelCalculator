@@ -1,3 +1,6 @@
+const darkMode = document.getElementById('darkMode')
+const body = document.getElementById('body')
+
 const travelDuration = document.getElementById('travelduration')
 const pathLength = document.getElementById('pathlength')
 const travelType = document.getElementById('traveltype')
@@ -17,6 +20,10 @@ const calculateButton = document.getElementById('buttoncalculate')
 const solution = document.getElementById('solution')
 
 //Nach Checkboxen Testen
+darkMode.addEventListener("change", function(){
+  body.classList.toggle('darkMode')
+})
+
 for(let i = 0; i < undergroundChecksbox.length; i++){
   undergroundChecksbox[i].addEventListener('change', () => {
     if (undergroundChecksbox[i].checked) {

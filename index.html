@@ -29,10 +29,10 @@
 
             <label for="travelspeed">Reiseschwindigkeit:</label>
             <select id="travelspeed" name="travelspeed">
-                <option title="3.2km/h" value="slow">Langsam (3.2 km/h)</option>
-                <option title="4.8km/h" value="normal">Normal (4.8 km/h)</option>
-                <option title="6.4km/h" value="fast">Schnell (6.4 km/h)</option>
-                <option title="Benutzerdefiniert" value="custom">Benutzerdefiniert</option>
+                <option value="slow">Langsam (3.2 km/h)</option>
+                <option value="normal">Normal (4.8 km/h)</option>
+                <option value="fast">Schnell (6.4 km/h)</option>
+                <option value="custom">Benutzerdefiniert</option>
             </select>
             <label id="labelcustomspeed">Geschwindigkeit: <input type="number" id="customtravelspeed" name="customtravelspeed"> km/h</label><br>
             <script>document.getElementById('labelcustomspeed').style.display = 'none';</script>
@@ -47,7 +47,7 @@
                 </select><br>
                 
                 <label title="Modifier: 100%">
-                    <input type="checkbox" name="untergrund" id="checkroad"> <p>Straße befestigt</p> <input type="text" name="Percentage" id="percentroad" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimeroad"></p>
+                    <input type="checkbox" name="untergrund" id="checkroad"> <p>Straße befestigt</p> <input autocomplete="off" type="text" name="Percentage" id="percentroad" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimeroad"></p>
                 </label><br>
                 <label  title="Modifier: 85%">
                     <input type="checkbox" name="untergrund" id="checkdirtroad"> <p>Unbefestigte Wege</p> <input autocomplete="off" type="text" name="Percentage" id="percentdirtroad" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimedirtroad"></p>

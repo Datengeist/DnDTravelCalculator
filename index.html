@@ -6,20 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body id="body" class="darkMode">
+    <body class="darkMode">
         <h1>Wegrechner</h1>
 
             <input type="checkbox" id="darkMode" checked>Dark Mode<br>
 
             <label for="travelduration">Reisedauer am Tag (in Stunden):</label>
-            <input type="number" id="travelduration" name="travelduration"> h<br>
+            <input autocomplete="off" type="number" id="travelduration" name="travelduration"> h<br>
 
             <label for="pathlength">Länge des Weges (in Kilometern):</label>
-            <input type="number" id="pathlength" name="pathlength" disabled> km<br>
+            <input autocomplete="off" type="number" id="pathlength" name="pathlength" disabled> km<br>
 
             <label for="traveltype">Reise Art:</label>
-            <select id="traveltype" name="traveltype">
-                <option value="fuss_leicht">Fuß (leicht)</option>
+            <select title="Modifier x1" id="traveltype" name="traveltype">
+                <option value="fuss_leicht" selected>Fuß (leicht)</option>
                 <option value="fuss_schwer">Fuß (schwer)</option>
                 <option value="pferd_leicht">Pferd (leicht)</option>
                 <option value="pferd_schwer">Pferd (schwer)</option>
@@ -29,10 +29,10 @@
 
             <label for="travelspeed">Reiseschwindigkeit:</label>
             <select id="travelspeed" name="travelspeed">
-                <option value="slow">Langsam (3.2 km/h)</option>
-                <option value="normal">Normal (4.8 km/h)</option>
-                <option value="fast">Schnell (6.4 km/h)</option>
-                <option value="custom">Benutzerdefiniert</option>
+                <option title="3.2km/h" value="slow">Langsam (3.2 km/h)</option>
+                <option title="4.8km/h" value="normal">Normal (4.8 km/h)</option>
+                <option title="6.4km/h" value="fast">Schnell (6.4 km/h)</option>
+                <option title="Benutzerdefiniert" value="custom">Benutzerdefiniert</option>
             </select>
             <label id="labelcustomspeed">Geschwindigkeit: <input type="number" id="customtravelspeed" name="customtravelspeed"> km/h</label><br>
             <script>document.getElementById('labelcustomspeed').style.display = 'none';</script>
@@ -45,39 +45,39 @@
                     <option value="km">Kilometer km</option>
                     <option value="percent">Percent %</option>
                 </select><br>
-
+                
                 <label title="Modifier: 100%">
-                    <input type="checkbox" name="untergrund" id="checkroad"> Straße befestigt <input type="text" name="Percentage" id="percentroad" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimeroad"></p>
+                    <input type="checkbox" name="untergrund" id="checkroad"> <p>Straße befestigt</p> <input type="text" name="Percentage" id="percentroad" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimeroad"></p>
                 </label><br>
                 <label  title="Modifier: 85%">
-                    <input type="checkbox" name="untergrund" id="checkdirtroad"> Unbefestigte Wege <input type="text" name="Percentage" id="percentdirtroad" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimedirtroad"></p>
+                    <input type="checkbox" name="untergrund" id="checkdirtroad"> <p>Unbefestigte Wege</p> <input autocomplete="off" type="text" name="Percentage" id="percentdirtroad" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimedirtroad"></p>
                 </label><br>
                 <label  title="Modifier: 75%">
-                    <input type="checkbox" name="untergrund" id="checkgras"> Grasland <input type="text" name="Percentage" id="percentgras" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimegras"></p>
+                    <input type="checkbox" name="untergrund" id="checkgras"> <p>Grasland</p> <input autocomplete="off" type="text" name="Percentage" id="percentgras" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimegras"></p>
                 </label><br>
                 <label  title="Modifier: 65%">
-                    <input type="checkbox" name="untergrund" id="checkforest"> Wald <input type="text" name="Percentage" id="percentforest" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimeforest"></p>
+                    <input type="checkbox" name="untergrund" id="checkforest"> <p>Wald</p> <input autocomplete="off" type="text" name="Percentage" id="percentforest" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimeforest"></p>
                 </label><br>
                 <label  title="Modifier: 45%">
-                    <input type="checkbox" name="untergrund" id="checkjungel"> Jungel <input type="text" name="Percentage" id="percentjungel" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimejungel"></p>
+                    <input type="checkbox" name="untergrund" id="checkjungel"> <p>Jungel</p> <input autocomplete="off" type="text" name="Percentage" id="percentjungel" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimejungel"></p>
                 </label><br>
                 <label  title="Modifier: 55%">
-                    <input type="checkbox" name="untergrund" id="checkdesert"> Wüste <input type="text" name="Percentage" id="percentdesert" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimedesert"></p>
+                    <input type="checkbox" name="untergrund" id="checkdesert"> <p>Wüste</p> <input autocomplete="off" type="text" name="Percentage" id="percentdesert" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimedesert"></p>
                 </label><br>
                 <label  title="Modifier: 35%">
-                    <input type="checkbox" name="untergrund" id="checkswamp"> Sumpf <input type="text" name="Percentage" id="percentswamp" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimeswamp"></p>
+                    <input type="checkbox" name="untergrund" id="checkswamp"> <p>Sumpf</p> <input autocomplete="off" type="text" name="Percentage" id="percentswamp" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimeswamp"></p>
                 </label><br>
                 <label  title="Modifier: 45%">
-                    <input type="checkbox" name="untergrund" id="checksnow"> Schnee <input type="text" name="Percentage" id="percentsnow" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimesnow"></p>
+                    <input type="checkbox" name="untergrund" id="checksnow"> <p>Schnee</p> <input autocomplete="off" type="text" name="Percentage" id="percentsnow" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimesnow"></p>
                 </label><br>
                 <label  title="Modifier: 65%">
-                    <input type="checkbox" name="untergrund" id="checkmountain"> Berge <input type="text" name="Percentage" id="percentmountain" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimemountain"></p>
+                    <input type="checkbox" name="untergrund" id="checkmountain"> <p>Berge</p> <input autocomplete="off" type="text" name="Percentage" id="percentmountain" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimemountain"></p>
                 </label><br>
                 <label  title="Modifier: 25%">
-                    <input type="checkbox" name="untergrund" id="checkextrememountain"> Extreme Berge <input type="text" name="Percentage" id="percentextrememountain" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimeextrememountain"></p>
+                    <input type="checkbox" name="untergrund" id="checkextrememountain"> <p>Extreme Berge</p> <input autocomplete="off" type="text" name="Percentage" id="percentextrememountain" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimeextrememountain"></p>
                 </label><br>
                 <label  title="Modifier: custom%">
-                    <input type="checkbox" name="untergrund" id="checkcustom"> Benutzerdefiniert: <input type="text" name="Percentage" id="custommodifier"> % <input type="number" name="Percentage" id="percentcustom" disabled> <p style="display: inline;" class="unit">km</p> <p style="display: inline;" id="undergroundtimecustom"></p>
+                    <input type="checkbox" name="untergrund" id="checkcustom"> <p>Benutzerdefiniert:</p> <input autocomplete="off" type="text" name="Percentage" id="custommodifier"> % <input type="number" name="Percentage" id="percentcustom" disabled> <p style="display: inline;" class="unit"></p> <p style="display: inline;" id="undergroundtimecustom"></p>
                 </label><br>
             </fieldset>
 

@@ -11,11 +11,15 @@
 
             <input type="checkbox" id="darkMode" checked>Dark Mode<br>
 
+            <div>
             <label for="travelduration">Reisedauer am Tag (in Stunden):</label>
             <input autocomplete="off" type="number" id="travelduration" name="travelduration"> h<br>
+            </div>
 
+            <div id="pathlengthBlock" style="display: none;">
             <label for="pathlength">Länge des Weges (in Kilometern):</label>
-            <input autocomplete="off" type="number" id="pathlength" name="pathlength" disabled> km<br>
+            <input autocomplete="off" type="number" id="pathlength" name="pathlength" disabled> km <br>
+            </div>
 
             <label for="traveltype">Reise Art:</label>
             <select title="Modifier x1" id="traveltype" name="traveltype">

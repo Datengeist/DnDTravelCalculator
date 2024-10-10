@@ -3,6 +3,7 @@ const darkElements = Array.from(document.getElementsByClassName('darkMode'))
 
 const travelDuration = document.getElementById('travelduration')
 const pathLength = document.getElementById('pathlength')
+const pathlengthBlock = document.getElementById('pathlengthBlock')
 const travelType = document.getElementById('traveltype')
 const travelSpeed = document.getElementById('travelspeed')
 const customSpeed = document.getElementById('customtravelspeed')
@@ -75,9 +76,17 @@ calcType.addEventListener('change', () => {
   switch(calcType.value){
     case 'percent':
       pathLength.removeAttribute('disabled')
+      pathlengthBlock.style.display = "flex"
+      unit.forEach((element)=>{
+        element.textContent = element.textContent==="km" ? "%" : ""
+      })
       break;
     case 'km':
       pathLength.setAttribute('disabled', true)
+      pathlengthBlock.style.display = "none"
+      unit.forEach((element)=>{
+        element.textContent = element.textContent==="%" ? "km" : ""
+      })
       break;
   }
 })

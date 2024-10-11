@@ -20,7 +20,6 @@ const calculateButton = document.getElementById('buttoncalculate')
 
 const solution = document.getElementById('solution')
 
-
 //Nach Checkboxen Testen
 darkMode.addEventListener("change", function(){
   darkElements.forEach(e => {
@@ -69,6 +68,7 @@ travelSpeed.addEventListener('change', () =>{
   }
 })
 
+//Rechenart updates
 calcType.addEventListener('change', () => {
   switch(calcType.value){
     case 'percent':

@@ -20,9 +20,6 @@ const calculateButton = document.getElementById('buttoncalculate')
 
 const solution = document.getElementById('solution')
 
-window.onload = function() {
-  alert("Willommen beim DnD Travel Calculator\nFür die genauen Modifier informationen bitte einmal über das jeweilige Element hovern");
-}
 
 //Nach Checkboxen Testen
 darkMode.addEventListener("change", function(){

@@ -151,8 +151,8 @@ function checkForInput(){
   }
   if(foo!=100 && calcType.value == 'percent'){
     if(lang == 'en'){
-      console.error('Underground has to add up to 100%')
-      return 'Underground has to add up to 100%'
+      console.error('Terrain has to add up to 100%')
+      return 'Terrain has to add up to 100%'
     }else if(lang == 'de'){
       console.error('Untergrund muss 100% sein')
       return 'Untergrund muss 100% sein'
@@ -254,7 +254,7 @@ function calculate(){
             break;
         }
         if(lang=='en'){
-          undergroundHours[i].innerHTML = (' The duration of the journey on this underground: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Days')
+          undergroundHours[i].innerHTML = (' The duration of the journey on this terrain: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Days')
         }else if(lang == 'de'){
           undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Tage')
         }

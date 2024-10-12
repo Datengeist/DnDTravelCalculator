@@ -1,35 +1,35 @@
 # DnD Travel Calculator
 
-Der DnD Travel Calculator ist ein nützliches Tool für Dungeons & Dragons-Spieler, um die Reisedauer basierend auf verschiedenen Faktoren zu berechnen. Die Website kann lokal ausgeführt werden und benötigt keinen Server, da es kein Backend gibt.
+The DnD Travel Calculator is a useful tool for Dungeons & Dragons players to calculate travel time based on various factors. The website can be run locally and does not require a server as there is no backend.
 
 ## Installation
 
-1. Klone das Git-Repository:
+1. Clone the Git repository:
     ```bash
     git clone https://github.com/Datengeist/DnDTravelCalculator.git
     ```
-2. Öffne die `index.html`-Datei in deinem bevorzugten Webbrowser.
+2. Open the `index.html` file in the `en` folder in your preferred web browser.
 
-## Nutzung
+## Usage
 
-### Eingabefelder
+### Input Fields
 
-- **Reisedauer am Tag (in Stunden)**: Gib die Anzahl der Stunden ein, die pro Tag gereist wird.
-- **Reise Art**: Wähle die Art der Fortbewegung (z.B. zu Fuß, Pferd, Kutsche).
-- **Reisegeschwindigkeit**: Wähle die Geschwindigkeit der Reise (langsam, normal, schnell oder benutzerdefiniert).
-- **Untergrund**: Wähle die verschiedenen Untergründe aus, auf denen gereist wird, und gib die entsprechenden Werte in Prozent oder Kilometern an.
+- **Travel Time per Day (in hours)**: Enter the number of hours traveled per day.
+- **Travel Type**: Choose the mode of transportation (e.g., on foot, horse, carriage).
+- **Travel Speed**: Select the travel speed (slow, normal, fast, or custom).
+- **Terrain**: Select the different terrains traveled on and enter the corresponding values in percentages or kilometers.
 
-### Berechnung
+### Calculation
 
-1. Fülle alle erforderlichen Eingabefelder aus.
-2. Klicke auf den Button "Berechnen".
-3. Die Ergebnisse werden unterhalb des Buttons angezeigt, einschließlich der Gesamtdauer der Reise und der Notwendigkeit von DC-Constitution-Rettungswürfen.
+1. Fill in all required input fields.
+2. Click the “Calculate” button.
+3. The results will be displayed below the button, including the total travel time and the need for DC Constitution saving throws.
 
-## Funktionen
+## Features
 
-- **Dark Mode**: Die Website unterstützt einen Dark Mode, der standardmäßig aktiviert ist.
-- **Kumulierte Wegangabe**: Sollte ein Untergrund häufiger vorkommen so können beide längen eingaben mit '+' getrennt werden und es wird für beide Teile die Länge berechnet
-- **Reiseart und Geschwindigkeit**: Berechnung der Reisedauer basierend auf der Reiseart und -geschwindigkeit.
-- **Untergrund**: Berücksichtigung verschiedener Untergründe mit individuellen Modifikatoren.
-- **Tranzparenz**: Um Modifier wurden entweder direkt dazu geschrieben oder können durch Hovern über das jeweilige element gesehen werden
-- **DC-Constitution-Rettungswürfe**: Bestimmung der Notwendigkeit von Rettungswürfen bei längeren Reisen.
+- **Dark Mode**: The website supports a dark mode, which is enabled by default.
+- **Cumulative Distance**: If a terrain occurs more frequently, both length inputs can be separated by ‘+’ and the length will be calculated for both parts.
+- **Travel Type and Speed**: Calculation of travel time based on travel type and speed.
+- **Terrain**: Consideration of different terrains with individual modifiers.
+- **Transparency**: Modifiers are either written directly or can be seen by hovering over the respective element.
+- **DC Constitution Saving Throws**: Determination of the need for saving throws on longer journeys.

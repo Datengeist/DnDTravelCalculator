@@ -1,4 +1,5 @@
 let lang
+const lengthUnit = document.getElementById('lengthUnit')
 const darkMode = document.getElementById('darkMode')
 const darkElements = Array.from(document.getElementsByClassName('darkMode'))
 
@@ -8,6 +9,7 @@ const pathlengthBlock = document.getElementById('pathlengthBlock')
 const travelType = document.getElementById('traveltype')
 const travelSpeed = document.getElementById('travelspeed')
 const customSpeed = document.getElementById('customtravelspeed')
+const labelcustomspeed = document.getElementById('labelcustomspeed')
 
 const unit = document.querySelectorAll('.unit')
 const calcType = document.getElementById('calctype')
@@ -50,7 +52,11 @@ for(let i = 0; i < undergroundChecksbox.length; i++){
           unit[i].innerHTML = "%"
           break
         case 'km':
-          unit[i].innerHTML = "km"
+          if(lengthUnit.value === 'km'){
+            unit[i].innerHTML = 'km'
+          }else{
+            unit[i].innerHTML = 'miles'
+          }
           break
       }
     } else {
@@ -76,15 +82,51 @@ calcType.addEventListener('change', () => {
       pathLength.removeAttribute('disabled')
       pathlengthBlock.style.display = "flex"
       unit.forEach((element)=>{
-        element.textContent = element.textContent==="km" ? "%" : ""
+        element.textContent = element.textContent==="km" || element.textContent==="miles" ? "%" : ""
       })
       break;
     case 'km':
       pathLength.setAttribute('disabled', true)
       pathlengthBlock.style.display = "none"
       unit.forEach((element)=>{
-        element.textContent = element.textContent==="%" ? "km" : ""
+        element.textContent = element.textContent==="%" ? (lengthUnit.value==='km'?'km':'miles') : ""
       })
+      break;
+  }
+})
+
+lengthUnit.addEventListener('change', () => {
+  let foo
+  switch(lengthUnit.value){
+    case('km'):
+      unit.forEach((element)=>{
+        element.textContent = element.textContent.replace("miles", "km")
+      })
+
+      foo = travelSpeed.value
+      travelSpeed.innerHTML = travelSpeed.innerHTML.replace("(1.9 mph)", "(3.2 km/h)")
+      travelSpeed.innerHTML = travelSpeed.innerHTML.replace("(2.9 mph)", "(4.8 km/h)")
+      travelSpeed.innerHTML = travelSpeed.innerHTML.replace("(3.9 mph)", "(6.4 km/h)")
+      travelSpeed.value = foo
+
+      labelcustomspeed.innerHTML = labelcustomspeed.innerHTML.replace("mph", "km/h")
+      pathlengthBlock.innerHTML = pathlengthBlock.innerHTML.replace("miles", "km")
+
+      break;
+    case('mph'):
+      unit.forEach((element)=>{
+        element.textContent = element.textContent.replace("km", "miles")
+      })
+      
+      foo = travelSpeed.value
+      travelSpeed.innerHTML = travelSpeed.innerHTML.replace("(3.2 km/h)", "(1.9 mph)")
+      travelSpeed.innerHTML = travelSpeed.innerHTML.replace("(4.8 km/h)", "(2.9 mph)")
+      travelSpeed.innerHTML = travelSpeed.innerHTML.replace("(6.4 km/h)", "(3.9 mph)")
+      travelSpeed.value = foo
+
+      labelcustomspeed.innerHTML = labelcustomspeed.innerHTML.replace("km/h", "mph")
+      pathlengthBlock.innerHTML = pathlengthBlock.innerHTML.replace("km", "miles")
+
       break;
   }
 })
@@ -92,34 +134,37 @@ calcType.addEventListener('change', () => {
 //Input Test
 function checkForInput(){
   if(travelDuration.value > 24 || travelDuration.value < 0 || !travelDuration.value){
-    if(lang == 'en'){
-      console.error('check Travelduration')
-      return 'Travelduration per day is imposible'
-    }else if(lang == 'de'){
-      console.error('Reisedauer überprüfen')
-      return 'Reisedauer pro Tag kann nicht sein'
+    switch(lang){
+      case('en'):
+        console.error('check Travelduration')
+        return 'Travelduration per day is imposible'
+      case('de'):
+        console.error('Reisedauer überprüfen')
+        return 'Reisedauer pro Tag kann nicht sein'
     }
     
   }
 
   if(pathLength.value <= 0 && calcType.value == 'percent'){
-    if(lang == 'en'){
-      console.error('There is no negative length')
-      return 'The length of the way can\'t be'
-    }else if(lang == 'de'){
-      console.error('Es gibt keine negative Länge')
-      return 'Länge der Weges kann nicht sein'
+    switch(lang){
+      case('en'):
+        console.error('There is no negative length')
+        return 'The length of the way can\'t be'
+      case('de'):
+        console.error('Es gibt keine negative Länge')
+        return 'Länge der Weges kann nicht sein'
     }
   }
 
   if(travelSpeed.value == 'custom'){
-    if(isNaN(parseInt(customSpeed.value)) || customSpeed.vylue <= 0){
-      if(lang == 'en'){
-        console.error('Please enter a Travel Speed')
-        return('Travel Speed can\'t be')
-      }else if(lang == 'de'){
-        console.error('Gib ne Reisegschwindigkeit ein')
-        return('Geschwindigkeit kann nicht sein')
+    if(isNaN(parseInt(customSpeed.value)) || customSpeed.value <= 0){
+      switch(lang){
+        case('en'):
+          console.error('Please enter a Travel Speed')
+          return('Travel Speed can\'t be')
+        case('de'):
+          console.error('Gib ne Reisegschwindigkeit ein')
+          return('Geschwindigkeit kann nicht sein')
       }
     }
   }
@@ -128,21 +173,23 @@ function checkForInput(){
   for(let i = 0; i < undergroundChecksbox.length; i++){
     if(undergroundChecksbox[i].checked && !isNaN(parseFloat(undergroundPercent[i].value))){
       if(undergroundPercent[i].value<0 && calcType.value === 'percent'){
-        if(lang == 'en'){
-          console.error('There are no negative Percent values')
-          return 'There are no negative Percent values'
-        }else if(lang == 'de'){
-          console.error('kann keine -% geben')
-          return 'kann keine -% geben'
+        switch(lang){
+          case('en'):
+            console.error('There are no negative Percent values')
+            return 'There are no negative Percent values'
+          case('de'):
+            console.error('kann keine -% geben')
+            return 'kann keine -% geben'
         }
       }
       if(undergroundPercent[i].value<0 && calcType.value === 'km'){
-        if(lang == 'en'){
-          console.error('There are no negative Kilometre values')
-          return 'There are no negative Kilometre values'
-        }else if(lang == 'de'){
-          console.error('kann keine -km geben')
-          return 'kann keine -km geben'
+        switch(lang){
+          case('en'):
+            console.error('There are no negative Kilometre values')
+            return 'There are no negative Kilometre values'
+          case('de'):
+            console.error('kann keine -km geben')
+            return 'kann keine -km geben'
         }
       }
 
@@ -150,22 +197,24 @@ function checkForInput(){
     }
   }
   if(foo!=100 && calcType.value == 'percent'){
-    if(lang == 'en'){
-      console.error('Terrain has to add up to 100%')
-      return 'Terrain has to add up to 100%'
-    }else if(lang == 'de'){
-      console.error('Untergrund muss 100% sein')
-      return 'Untergrund muss 100% sein'
+    switch(lang){
+      case('en'):
+        console.error('Terrain has to add up to 100%')
+        return 'Terrain has to add up to 100%'
+      case('de'):
+        console.error('Untergrund muss 100% sein')
+        return 'Untergrund muss 100% sein'
     }
   }
   
   if(undergroundChecksbox[10].checked && customModifierInput.value <= 0){
-    if(lang == 'en'){
-      console.error('Modifier has to be bigger than 0%')
-      return 'Modifier has to be bigger than 0%'
-    }else if(lang == 'de'){
-      console.error('Modifier muss größer als 0% sein')
-      return 'Modifier muss größer als 0% sein'
+    switch(lang){
+      case('en'):
+        console.error('Modifier has to be bigger than 0%')
+        return 'Modifier has to be bigger than 0%'
+      case('de'):
+        console.error('Modifier muss größer als 0% sein')
+        return 'Modifier muss größer als 0% sein'
     }
   }
   return 'passt'
@@ -174,9 +223,9 @@ function checkForInput(){
 function calculate(){
   let speed
   switch(travelSpeed.value){
-    case 'slow':  speed= parseFloat(3.2); break;
-    case 'normal': speed = parseFloat(4.8); break;
-    case 'fast': speed = parseFloat(6.4); break;
+    case 'slow':  speed= parseFloat(lengthUnit=="km"?"3.2":"1.9"); break;
+    case 'normal': speed = parseFloat(lengthUnit=="km"?"4.8":"2.9"); break;
+    case 'fast': speed = parseFloat(lengthUnit=="km"?"6.4":"3.9"); break;
     case 'custom': speed= parseFloat(customSpeed.value); break;
   }
 
@@ -208,11 +257,14 @@ function calculate(){
 
     if(numbers.length > 1){
       let multipleSolutions =[];
-      if(lang=='en'){
-        undergroundHours[i].innerHTML = (' The duration of the journey on this underground:')
-      }else if(lang == 'de'){
-        undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt:')
-      }
+      switch(lang){
+        case('en'):
+          undergroundHours[i].innerHTML = (' The duration of the journey on this underground:')
+          break
+        case('de'):
+          undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt:')
+          break
+        }
       for(let j = 0; j < numbers.length; j++){
         if(undergroundChecksbox[i].checked && !isNaN(parseFloat(numbers[j]))){
           switch(calcType.value){
@@ -224,10 +276,13 @@ function calculate(){
               multipleSolutions[j]= numbers[j] / undergroundSpeeds[i]
               break;
           }
-          if(lang=='en'){
-            undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (parseFloat((multipleSolutions[j]/travelDuration.value).toFixed(2)) + ' Days (' + parseFloat(multipleSolutions[j].toFixed(2)) + 'h)')
-          }else if(lang == 'de'){
-            undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (parseFloat((multipleSolutions[j]/travelDuration.value).toFixed(2)) + ' Tage (' + parseFloat(multipleSolutions[j].toFixed(2)) + 'h)')
+          switch(lang){
+            case('en'):
+              undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (parseFloat((multipleSolutions[j]/travelDuration.value).toFixed(2)) + ' Days (' + parseFloat(multipleSolutions[j].toFixed(2)) + 'h)')
+              break
+            case('de'):
+              undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (parseFloat((multipleSolutions[j]/travelDuration.value).toFixed(2)) + ' Tage (' + parseFloat(multipleSolutions[j].toFixed(2)) + 'h)')
+              break
           }
           if(j+1 < numbers.length){
             undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (' + ' )
@@ -237,10 +292,13 @@ function calculate(){
         }
       }
       undergroundLength[i] = multipleSolutions.reduce((a, b) => a+b, 0)
-      if(lang=='en'){
-        undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (' = ' + (multipleSolutions.reduce((a, b) => a+b, 0)/travelDuration.value).toFixed(2) + 'Days (' + multipleSolutions.reduce((a, b) => a+b, 0).toFixed(2) + 'h)');
-      }else if(lang == 'de'){
-        undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (' = ' + (multipleSolutions.reduce((a, b) => a+b, 0)/travelDuration.value).toFixed(2) + 'Tage (' + multipleSolutions.reduce((a, b) => a+b, 0).toFixed(2) + 'h)');
+      switch(lang){
+        case('en'):
+          undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (' = ' + (multipleSolutions.reduce((a, b) => a+b, 0)/travelDuration.value).toFixed(2) + 'Days (' + multipleSolutions.reduce((a, b) => a+b, 0).toFixed(2) + 'h)');
+          break
+        case('de'):
+          undergroundHours[i].innerHTML = undergroundHours[i].innerHTML + (' = ' + (multipleSolutions.reduce((a, b) => a+b, 0)/travelDuration.value).toFixed(2) + 'Tage (' + multipleSolutions.reduce((a, b) => a+b, 0).toFixed(2) + 'h)');
+          break
       }
     }else{
       if(undergroundChecksbox[i].checked && !isNaN(parseFloat(undergroundPercent[i].value))){
@@ -253,10 +311,13 @@ function calculate(){
             undergroundDuration[i]= undergroundPercent[i].value / undergroundSpeeds[i]
             break;
         }
-        if(lang=='en'){
-          undergroundHours[i].innerHTML = (' The duration of the journey on this terrain: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Days')
-        }else if(lang == 'de'){
-          undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Tage')
+        switch(lang){
+          case('en'):
+            undergroundHours[i].innerHTML = (' The duration of the journey on this terrain: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Days')
+            break
+          case('de'):
+            undergroundHours[i].innerHTML = (' Dauer der Reise auf diesem Unergrund beträgt: ' + parseFloat((undergroundDuration[i]/travelDuration.value).toFixed(2)) + ' Tage')
+            break
         }
         foo += parseFloat(undergroundDuration[i])
       }
@@ -265,25 +326,29 @@ function calculate(){
   let dcString = ''
   if(travelDuration.value > 8){
     for(let i = 1; i <= (travelDuration.value - 8); i++){
-      if(lang=='en'){
-        if(i==1){
-          dcString += 'For '+(i+8)+' hours of travel time, make a DC '+(i+10)+' Constitution saving throw or gain one level of exhaustion.<br>'
-        }else{
-          dcString += 'For '+(i+8)+' hours of travel time, make another DC '+(i+10)+' Constitution saving throw or gain another level of exhaustion.<br>'
-        }
-      }else if(lang == 'de'){
-        if(i==1){
-          dcString += 'Für '+(i+8)+' Stunden an Reisezeit mach ein DC '+(i+10)+' Con rettungswurf oder erhalte einen Punkt Erschöpfung.<br>'
-        }else{
-          dcString += 'Für '+(i+8)+' Stunden an Reisezeit mach ein weiteren DC '+(i+10)+' Con rettungswurf oder erhalte ein weiteren Punkt Erschöpfung.<br>'
-        }
+      switch(lang){
+        case('en'):
+          if(i==1){
+            dcString += 'For '+(i+8)+' hours of travel time, make a DC '+(i+10)+' Constitution saving throw or gain one level of exhaustion.<br>'
+          }else{
+            dcString += 'For '+(i+8)+' hours of travel time, make another DC '+(i+10)+' Constitution saving throw or gain another level of exhaustion.<br>'
+          }
+          break
+        case('de'):
+          if(i==1){
+            dcString += 'Für '+(i+8)+' Stunden an Reisezeit mach ein DC '+(i+10)+' Con rettungswurf oder erhalte einen Punkt Erschöpfung.<br>'
+          }else{
+            dcString += 'Für '+(i+8)+' Stunden an Reisezeit mach ein weiteren DC '+(i+10)+' Con rettungswurf oder erhalte ein weiteren Punkt Erschöpfung.<br>'
+          }
+          break
       }      
     }
   }
-  if(lang=='en'){
-    return ('Total time for journey: ' + parseFloat(foo.toFixed(2)) + ' h, which are ' + parseFloat((foo/travelDuration.value).toFixed(2)) + ' Days. <br>'+dcString)
-  }else if(lang == 'de'){
-    return ('Gesamtdauer der Reise: ' + parseFloat(foo.toFixed(2)) + ' h, was ' + parseFloat((foo/travelDuration.value).toFixed(2)) + ' Tage sind. <br>'+dcString)
+  switch(lang){
+    case('en'):
+      return ('Total time for journey: ' + parseFloat(foo.toFixed(2)) + ' h, which are ' + parseFloat((foo/travelDuration.value).toFixed(2)) + ' Days. <br>'+dcString)
+    case('de'):
+      return ('Gesamtdauer der Reise: ' + parseFloat(foo.toFixed(2)) + ' h, was ' + parseFloat((foo/travelDuration.value).toFixed(2)) + ' Tage sind. <br>'+dcString)
   }
 }
 

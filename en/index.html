@@ -16,14 +16,20 @@
 
             <input type="checkbox" id="darkMode" checked>Dark Mode<br>
 
+            <label for="lengthUnit">Einheit</label>
+            <select title="lengthUnit" id="lengthUnit" name="lengthUnit">
+                <option value="mph">Miles per Hour (mph)</option>
+                <option value="km">Kilometre (km)</option>
+            </select>
+
             <div>
             <label for="travelduration">Travelduration per day (in hours):</label>
             <input autocomplete="off" type="number" id="travelduration" name="travelduration"> h<br>
             </div>
 
             <div id="pathlengthBlock" style="display: none;">
-            <label for="pathlength">Length of the Way (in km):</label>
-            <input autocomplete="off" type="number" id="pathlength" name="pathlength" disabled> km <br>
+            <label for="pathlength">Length of the Way (in miles):</label>
+            <input autocomplete="off" type="number" id="pathlength" name="pathlength" disabled> <br>
             </div>
 
             <label for="traveltype">Travel Type:</label>
@@ -38,12 +44,12 @@
 
             <label for="travelspeed">Travel Speed:</label>
             <select id="travelspeed" name="travelspeed">
-                <option value="slow">Slow (3.2 km/h)</option>
-                <option value="normal">Normal (4.8 km/h)</option>
-                <option value="fast">Fast (6.4 km/h)</option>
+                <option value="slow">Slow (1.9 mph)</option>
+                <option value="normal">Normal (2.9 mph)</option>
+                <option value="fast">Fast (3.9 mph)</option>
                 <option value="custom">Custom</option>
             </select>
-            <label id="labelcustomspeed">Speed: <input type="number" id="customtravelspeed" name="customtravelspeed"> km/h</label><br>
+            <label id="labelcustomspeed">Speed: <input type="number" id="customtravelspeed" name="customtravelspeed"> mph</label><br>
             <script>document.getElementById('labelcustomspeed').style.display = 'none';</script>
 
 

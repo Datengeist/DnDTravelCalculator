@@ -111,7 +111,9 @@ lengthUnit.addEventListener('change', () => {
 
       labelcustomspeed.innerHTML = labelcustomspeed.innerHTML.replace("mph", "km/h")
       pathlengthBlock.innerHTML = pathlengthBlock.innerHTML.replace("miles", "km")
+      foo = calcType.value
       calcType.innerHTML = calcType.innerHTML.replace("Miles", "Kilometer km")
+      calcType.value = foo
 
       break;
     case('mph'):

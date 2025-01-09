@@ -42,7 +42,6 @@
   border: 1px solid black;
   border-radius: 15px;
   overflow: hidden;
-  padding: 10px;
   margin: 5px;
 }
 .label{
@@ -108,4 +107,84 @@
 }
 #content section{
   padding: 10px;
+}
+#roadPavedImage{
+  background-image: url(../img/pavedRoad.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#roadUnpavedImage{
+  background-image: url(../img/unpavedRoad.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#grasslandImage{
+  background-image: url(../img/grassland.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#forestImage{
+  background-image: url(../img/forest.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#jungleImage{
+  background-image: url(../img/jungle.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#desertImage{
+  background-image: url(../img/desert.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#swampImage{
+  background-image: url(../img/swamp.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#snowImage{
+  background-image: url(../img/snow.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#mountainsImage{
+  background-image: url(../img/mountains.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+#extremMountainsImage{
+  background-image: url(../img/extremeMountains.png);
+  background-size: cover;
+  background-position: center;
+  height: 7em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
 }

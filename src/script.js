@@ -2,6 +2,8 @@ const translations ={
     "en" : null,
     "de" : null
 }
+const images = Array.from(document.getElementsByClassName('image'));
+const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
 
 function loadTranslations(lang){
     fetch(`../lang/${lang}.json`)
@@ -21,5 +23,6 @@ function updateContent(lang){
         });
     });
 }
+
 
 loadTranslations('en');

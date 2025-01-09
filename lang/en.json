@@ -1,0 +1,24 @@
+{
+    "headline": "DnD Travel Calculator",
+    "github": "More Informations about Features: ",
+    
+    "travelDurationLavel" : "Travelduration per day (in Hours)",
+    
+    "travelTypeLabel" : "Type of traveling",
+    "walkingLight": "Walking (light)",
+    "walkingHeavy": "Walking (heavy)",
+    "horseLight": "Horse (light)",
+    "horseHeavy": "Horse (heavy)",
+    "carriageSmall": "Carriage (small)",
+    "carriageLarge": "Carriage (large)",
+
+    "travelSpeedLabel" : "Speed of traveling",
+    "speedSlow": "Slow",
+    "speedNormal": "Normal",
+    "speedFast": "Fast",
+    "speedCustom": "Custom",
+    "customSpeedLabel": "Custom Speed",
+
+    "travelDistanceLabel" : "Distance to travel"
+
+}

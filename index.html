@@ -1,0 +1,139 @@
+<html lang="en">
+    <head>
+        <title>DnD Travel Calculator</title>
+        <meta charset="utf-8">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <h1 id="headline"></h1>
+        <p id="github"></p>
+        <aside>
+        </aside>
+        <section id="upperSettings">
+            <label id="travelDurationLavel" for="travelDuration"></label>
+            <input type="number" id="travelDuration"><br>
+
+            <label id="travelTypeLabel" for="travelType"></label>
+            <select id="travelType">
+                <option id="walkingLight" value="walkingLight"></option>
+                <option id="walkingHeavy" value="walkingHeavy"></option>
+                <option id="horseLight" value="horseLight"></option>
+                <option id="horseHeavy" value="horseHeavy"></option>
+                <option id="carriageSmall" value="carriageSmall"></option>
+                <option id="carriageLarge" value="carriageLarge"></option>
+            </select><br>
+
+            <label id="travelSpeedLabel" for="travelSpeed"></label>
+            <select id="travelSpeed">
+                <option id="speedSlow" value="speedSlow"></option>
+                <option id="speedNormal" value="speedNormal"></option>
+                <option id="speedFast" value="speedFast"></option>
+                <option id="speedCustom" value="speedCustom"></option>
+            </select>
+            <label id="customSpeedLabel" for="customSpeed"></label>
+            <input type="number" id="customSpeed"><br>
+
+            <label id="travelDistanceLabel" for="travelDistance"></label>
+            <input type="number" id="travelDistance"><br>
+        </section>
+
+        <section id="lowerSettings">
+            
+            <div id="roadPaved" class="underground">
+                <div id="roadPavedImage"></div>
+                <label id="roadPavedLabel" for="roadPaved"></label>
+                <input type="checkbox" id="roadPaved">
+                <input type="number" id="roadPavedModifier">
+                <p id="roadPavedModifierLabel"></p>
+            </div>
+
+            <div id="roadUnpaved" class="underground">
+                <div id="roadUnpavedImage"></div>
+                <label id="roadUnpavedLabel" for="roadUnpaved"></label>
+                <input type="checkbox" id="roadUnpaved">
+                <input type="number" id="roadUnpavedModifier">
+                <p id="roadUnpavedModifierLabel"></p>
+            </div>
+
+            <div id="Grassland" class="underground">
+                <div id="GrasslandImage"></div>
+                <label id="GrasslandLabel" for="Grassland"></label>
+                <input type="checkbox" id="Grassland">
+                <input type="number" id="GrasslandModifier">
+                <p id="GrasslandModifierLabel"></p>
+            </div>
+
+            <div id="Forest" class="underground">
+                <div id="ForestImage"></div>
+                <label id="ForestLabel" for="Forest"></label>
+                <input type="checkbox" id="Forest">
+                <input type="number" id="ForestModifier">
+                <p id="ForestModifierLabel"></p>
+            </div>
+
+            <div id="Jungle" class="underground">
+                <div id="JungleImage"></div>
+                <label id="JungleLabel" for="Jungle"></label>
+                <input type="checkbox" id="Jungle">
+                <input type="number" id="JungleModifier">
+                <p id="JungleModifierLabel"></p>
+            </div>
+
+            <div id="Desert" class="underground">
+                <div id="DesertImage"></div>
+                <label id="DesertLabel" for="Desert"></label>
+                <input type="checkbox" id="Desert">
+                <input type="number" id="DesertModifier">
+                <p id="DesertModifierLabel"></p>
+            </div>
+
+            <div id="Swamp" class="underground">
+                <div id="SwampImage"></div>
+                <label id="SwampLabel" for="Swamp"></label>
+                <input type="checkbox" id="Swamp">
+                <input type="number" id="SwampModifier">
+                <p id="SwampModifierLabel"></p>
+            </div>
+
+            <div id="Snow" class="underground">
+                <div id="SnowImage"></div>
+                <label id="SnowLabel" for="Snow"></label>
+                <input type="checkbox" id="Snow">
+                <input type="number" id="SnowModifier">
+                <p id="SnowModifierLabel"></p>
+            </div> 
+
+            <div id="Mountains" class="underground">
+                <div id="MountainsImage"></div>
+                <label id="MountainsLabel" for="Mountains"></label>
+                <input type="checkbox" id="Mountains">
+                <input type="number" id="MountainsModifier">
+                <p id="MountainsModifierLabel"></p>
+            </div>
+
+            <div id="ExtremMountains" class="underground">
+                <div id="ExtremMountainsImage"></div>
+                <label id="ExtremMountainsLabel" for="ExtremMountains"></label>
+                <input type="checkbox" id="ExtremMountains">
+                <input type="number" id="ExtremMountainsModifier">
+                <p id="ExtremMountainsModifierLabel"></p>
+            </div>
+
+            <div id="custom1" class="underground">
+                <div id="custom1Image"></div>
+                <label id="custom1Label" for="custom1"></label>
+                <input type="checkbox" id="custom1">
+                <input type="number" id="custom1Modifier">
+                <p id="custom1ModifierLabel"></p>
+            </div>
+
+            <div id="custom2" class="underground">
+                <div id="custom2Image"></div>
+                <label id="custom2Label" for="custom2"></label>
+                <input type="checkbox" id="custom2">
+                <input type="number" id="custom2Modifier">
+                <p id="custom2ModifierLabel"></p>
+            </div>
+        </section>
+
+    </body>

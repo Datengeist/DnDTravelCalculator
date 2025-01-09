@@ -1,0 +1,111 @@
+[darkMode="false"] {
+  background-color: white;
+  color: black;
+}
+
+[darkMode="true"] {
+  background-color: rgb(26, 26, 26);
+  color: white;
+}
+[darkMode="true"] input {
+  border: none;
+  background-color: rgb(52, 52, 52);
+  color: #EAEAEA;
+}
+[darkMode="true"] input:focus {
+  border: none;
+  background-color: rgba(52, 52, 52);
+  color: #EAEAEA;
+}
+[darkMode="true"] button {
+  background-color: rgb(52, 52, 52);
+  color: #EAEAEA;
+}
+[darkMode="true"] select {
+  background-color: rgb(52, 52, 52);
+  color: #EAEAEA;
+}
+[darkMode="true"] #content {
+  border: 1px solid white;
+}
+[darkMode="true"] #upperSettings {
+  border-bottom: 1px solid white;
+}
+[darkMode="true"] .underground {
+  border: 1px solid white;
+}
+
+*{
+  font-family: Arial, sans-serif;
+}
+.underground{
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 10px;
+  margin: 5px;
+}
+.label{
+  display: inline-block;
+  width: 25%;
+}
+
+#content{
+  margin-left: 12.5%;
+  width: 75%;
+  border: 1px solid black;
+  border-radius: 15px;
+  overflow: hidden;
+}
+#upperSettings{
+  border-bottom: 1px solid black;
+}
+#lowerSettings{
+  display: grid;
+  grid-template-areas: 
+  "roadPaved roadUnpaved"
+  "grassland forest"
+  "jungle desert"
+  "swamp snow"
+  "mountains extremeMountains"
+  "custom1 custom2";
+}
+#roadPaved{
+  grid-area: roadPaved;
+}
+#roadUnpaved{
+  grid-area: roadUnpaved;
+}
+#grassland{
+  grid-area: grassland;
+}
+#forest{
+  grid-area: forest;
+}
+#jungle{
+  grid-area: jungle;
+}
+#desert{
+  grid-area: desert;
+}
+#swamp{
+  grid-area: swamp;
+}
+#snow{
+  grid-area: snow;
+}
+#mountains{
+  grid-area: mountains;
+}
+#extremeMountains{
+  grid-area: extremeMountains;
+}
+#custom1{
+  grid-area: custom1;
+}
+#custom2{
+  grid-area: custom2;
+}
+#content section{
+  padding: 10px;
+}

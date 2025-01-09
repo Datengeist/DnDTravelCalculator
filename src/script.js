@@ -4,7 +4,7 @@ const translations ={
 }
 
 function loadTranslations(lang){
-    fetch(`lang/${lang}.json`)
+    fetch(`../lang/${lang}.json`)
         .then(response => response.json())
         .then(data => {
             translations[lang] = data; 

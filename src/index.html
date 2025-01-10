@@ -9,172 +9,224 @@
     </head>
     <body darkMode="true">
         <header>
-            <div>
-                <button id="darkModeButton" onclick="toggleDarkMode()">d</button>
-                <select title="lang" id="langSelect">
-                    <option class="language" id="langEN" value="en">English</option>
-                    <option class="language" id="langDE" value="de">Deutsch</option>
-                </select>
-                <select title="unit" id="unitSelect">
-                    <option id="unitMetric" value="metric">Metric</option>
-                    <option id="unitImperial" value="imperial">Imperial</option>
-                </select>
-            </div>
+            <button id="darkModeButton" onclick="toggleDarkMode()">d</button>
+            <select title="lang" id="langSelect">
+                <option class="language" id="langEN" value="en">English</option>
+                <option class="language" id="langDE" value="de">Deutsch</option>
+            </select>
+            <select title="unit" id="unitSelect">
+                <option id="unitMetric" value="metric">Metric</option>
+                <option id="unitImperial" value="imperial">Imperial</option>
+            </select>
         </header>
 
         <h1 id="headline"></h1>
-        <p id="github"></p>
+        <p id="github"><a href="https://github.com/Datengeist/DnDTravelCalculator">Github</a></p>
+        
 
         <div id="content">
-        <section id="upperSettings">
-            <label id="travelDurationLabel" for="travelDuration"></label>
-            <input type="number" id="travelDuration">
-            <p id="travelDurationUnit">h</p>
+            <section id="upperSettings">
+                <label id="travelDurationLabel" for="travelDuration"></label>
+                <input type="number" id="travelDuration">
+                <p id="travelDurationUnit">h</p>
 
-            <label id="travelTypeLabel" for="travelType"></label>
-            <select title="travelType" id="travelType">
-                <option id="walkingLight" value="walkingLight"></option>
-                <option id="walkingHeavy" value="walkingHeavy"></option>
-                <option id="horseLight" value="horseLight"></option>
-                <option id="horseHeavy" value="horseHeavy"></option>
-                <option id="carriageSmall" value="carriageSmall"></option>
-                <option id="carriageLarge" value="carriageLarge"></option>
-            </select>
+                <label id="travelTypeLabel" for="travelType"></label>
+                <select title="travelType" id="travelType">
+                    <option id="walkingLight" value="1.0"></option>
+                    <option id="walkingHeavy" value="0.9"></option>
+                    <option id="horseLight" value="2.5"></option>
+                    <option id="horseHeavy" value="1.9"></option>
+                    <option id="carriageSmall" value="1.5"></option>
+                    <option id="carriageLarge" value="1.2"></option>
+                </select>
 
-            <label id="travelSpeedLabel" for="travelSpeed"></label>
-            <select title="travelSpeed" id="travelSpeed">
-                <option id="speedSlow" value="speedSlow"></option>
-                <option id="speedNormal" value="speedNormal"></option>
-                <option id="speedFast" value="speedFast"></option>
-                <option id="speedCustom" value="speedCustom"></option>
-            </select>
-            <label id="customSpeedLabel" for="customSpeed"></label>
-            <input type="number" id="customSpeed">
-            <p id="customSpeedUnit" class="unit">km/h</p>
-        </section>
+                <label id="travelSpeedLabel" for="travelSpeed"></label>
+                <select title="travelSpeed" id="travelSpeed">
+                    <option id="metricSpeedSlow" value="speedSlow" speed="3.2"></option>
+                    <option id="metricSpeedNormal" value="speedNormal" speed="4.8"></option>
+                    <option id="metricSpeedFast" value="speedFast" speed="6.4"></option>
+                    <option id="speedCustom" value="speedCustom"></option>
+                </select>
+                <label id="customSpeedLabel" for="customSpeed" customSpeed hidden></label>
+                <input type="number" id="customSpeed" customSpeed hidden>
+                <span id="customSpeedUnit"  class="unitSpeed" customSpeed hidden>km/h</span>
+            </section>
 
-        <section id="lowerSettings">
-            
-            <div id="roadPaved" class="underground">
-                <div id="roadPavedImage" class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="roadPavedLabel" class="label" for="roadPaved"></label>
-                    <input class="checkbox" type="checkbox" id="roadPaved">
-                    <input class="number" type="number" id="roadPavedModifier">
-                    <p id="roadPavedModifierUnit" class="unit">km</p>
+            <section id="lowerSettings">
+                <div id="roadPaved" class="underground">
+                    <div id="roadPavedImage" class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="roadPavedLabel" class="label" for="roadPaved"></label>
+                        <input class="checkbox" type="checkbox" id="roadPaved">
+                        <input class="number" type="text" id="roadPavedModifier">
+                        <p id="roadPavedModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="roadPavedValue" hidden></label>
+                        <input class="multiplicator" type="number" id="roadPavedValue" value="100" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="roadUnpaved" class="underground">
-                <div id="roadUnpavedImage" class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="roadUnpavedLabel" class="label" for="roadUnpaved"></label>
-                    <input class="checkbox" type="checkbox" id="roadUnpaved">
-                    <input class="number" type="number" id="roadUnpavedModifier">
-                    <p id="roadUnpavedModifierUnit" class="unit">km</p>
+                <div id="roadUnpaved" class="underground">
+                    <div id="roadUnpavedImage" class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="roadUnpavedLabel" class="label" for="roadUnpaved"></label>
+                        <input class="checkbox" type="checkbox" id="roadUnpaved">
+                        <input class="number" type="text" id="roadUnpavedModifier">
+                        <p id="roadUnpavedModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="roadUnpavedValue" hidden></label>
+                        <input class="multiplicator" type="number" id="roadUnpavedValue" value="85" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="grassland" class="underground">
-                <div id="grasslandImage"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="grasslandLabel" class="label" for="grassland"></label>
-                    <input class="checkbox" type="checkbox" id="grassland">
-                    <input class="number" type="number" id="grasslandModifier">
-                    <p id="grasslandModifierUnit" class="unit">km</p>
+                <div id="grassland" class="underground">
+                    <div id="grasslandImage"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="grasslandLabel" class="label" for="grassland"></label>
+                        <input class="checkbox" type="checkbox" id="grassland">
+                        <input class="number" type="text" id="grasslandModifier">
+                        <p id="grasslandModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="grasslandValue" hidden></label>
+                        <input class="multiplicator" type="number" id="grasslandValue" value="75" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="forest" class="underground">
-                <div id="forestImage"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="forestLabel" class="label" for="forest"></label>
-                    <input class="checkbox" type="checkbox" id="forest">
-                    <input class="number" type="number" id="forestModifier">
-                    <p id="forestModifierUnit" class="unit">km</p>
+                <div id="forest" class="underground">
+                    <div id="forestImage"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="forestLabel" class="label" for="forest"></label>
+                        <input class="checkbox" type="checkbox" id="forest">
+                        <input class="number" type="text" id="forestModifier">
+                        <p id="forestModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="forestValue" hidden></label>
+                        <input class="multiplicator" type="number" id="forestValue" value="65" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="jungle" class="underground">
-                <div id="jungleImage"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="jungleLabel" class="label" for="jungle"></label>
-                    <input class="checkbox" type="checkbox" id="jungle">
-                    <input class="number" type="number" id="jungleModifier">
-                    <p id="jungleModifierUnit" class="unit">km</p>
+                <div id="jungle" class="underground">
+                    <div id="jungleImage"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="jungleLabel" class="label" for="jungle"></label>
+                        <input class="checkbox" type="checkbox" id="jungle">
+                        <input class="number" type="text" id="jungleModifier">
+                        <p id="jungleModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="jungleValue" hidden></label>
+                        <input class="multiplicator" type="number" id="jungleValue" value="55" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="desert" class="underground">
-                <div id="desertImage"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="desertLabel" class="label" for="desert"></label>
-                    <input class="checkbox" type="checkbox" id="desert">
-                    <input class="number" type="number" id="desertModifier">
-                    <p id="desertModifierUnit" class="unit">km</p>
+                <div id="desert" class="underground">
+                    <div id="desertImage"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="desertLabel" class="label" for="desert"></label>
+                        <input class="checkbox" type="checkbox" id="desert">
+                        <input class="number" type="text" id="desertModifier">
+                        <p id="desertModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="desertValue" hidden></label>
+                        <input class="multiplicator" type="number" id="desertValue" value="45" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="swamp" class="underground">
-                <div id="swampImage"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="swampLabel" class="label" for="swamp"></label>
-                    <input class="checkbox" type="checkbox" id="swamp">
-                    <input class="number" type="number" id="swampModifier">
-                    <p id="swampModifierUnit" class="unit">km</p>
+                <div id="swamp" class="underground">
+                    <div id="swampImage"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="swampLabel" class="label" for="swamp"></label>
+                        <input class="checkbox" type="checkbox" id="swamp">
+                        <input class="number" type="text" id="swampModifier">
+                        <p id="swampModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="swampValue" hidden></label>
+                        <input class="multiplicator" type="number" id="swampValue" value="35" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="snow" class="underground">
-                <div id="snowImage"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="snowLabel" class="label" for="snow"></label>
-                    <input class="checkbox" type="checkbox" id="snow">
-                    <input class="number" type="number" id="snowModifier">
-                    <p id="snowModifierUnit" class="unit">km</p>
-                </div>
-            </div> 
+                <div id="snow" class="underground">
+                    <div id="snowImage"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="snowLabel" class="label" for="snow"></label>
+                        <input class="checkbox" type="checkbox" id="snow">
+                        <input class="number" type="text" id="snowModifier">
+                        <p id="snowModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="snowValue" hidden></label>
+                        <input class="multiplicator" type="number" id="snowValue" value="45" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
+                </div> 
 
-            <div id="mountains" class="underground">
-                <div id="mountainsImage"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="mountainsLabel" class="label" for="mountains"></label>
-                    <input class="checkbox" type="checkbox" id="mountains">
-                    <input class="number" type="number" id="mountainsModifier">
-                    <p id="mountainsModifierUnit" class="unit">km</p>
+                <div id="mountains" class="underground">
+                    <div id="mountainsImage"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="mountainsLabel" class="label" for="mountains"></label>
+                        <input class="checkbox" type="checkbox" id="mountains">
+                        <input class="number" type="text" id="mountainsModifier">
+                        <p id="mountainsModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="mountainsValue" hidden></label>
+                        <input class="multiplicator" type="number" id="mountainsValue" value="65" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="extremMountains" class="underground">
-                <div id="extremMountainsImage"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="extremMountainsLabel" class="label" for="extremMountains"></label>
-                    <input class="checkbox" type="checkbox" id="extremMountains">
-                    <input class="number" type="number" id="extremMountainsModifier">
-                    <p id="extremMountainsModifierUnit" class="unit">km</p>
+                <div id="extremMountains" class="underground">
+                    <div id="extremMountainsImage"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="extremMountainsLabel" class="label" for="extremMountains"></label>
+                        <input class="checkbox" type="checkbox" id="extremMountains">
+                        <input class="number" type="text" id="extremMountainsModifier">
+                        <p id="extremMountainsModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="extremMountainsValue" hidden></label>
+                        <input class="multiplicator" type="number" id="extremMountainsValue" value="25" hidden>
+                        <p class="percentLabel" hidden>%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="custom1" class="underground">
-                <div id="custom1Image"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="custom1Label" class="label" for="custom1"></label>
-                    <input class="checkbox" type="checkbox" id="custom1">
-                    <input class="number" type="number" id="custom1Modifier">
-                    <p id="custom1ModifierUnit" class="unit">km</p>
+                <div id="custom1" class="underground">
+                    <div id="custom1Image"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="custom1Label" class="label" for="custom1"></label>
+                        <input class="checkbox" type="checkbox" id="custom1">
+                        <input class="number" type="text" id="custom1Modifier">
+                        <p id="custom1ModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="custom1Value"></label>
+                        <input class="multiplicator" type="number" id="custom1Value" value="1">
+                        <p class="percentLabel">%</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="custom2" class="underground">
-                <div id="custom2Image"  class="image"></div>
-                <div class="lowerUnderground">
-                    <label id="custom2Label" class="label" for="custom2"></label>
-                    <input class="checkbox" type="checkbox" id="custom2">
-                    <input class="number" type="number" id="custom2Modifier">
-                    <p id="custom2ModifierUnit" class="unit">km</p>
+                <div id="custom2" class="underground">
+                    <div id="custom2Image"  class="image"></div>
+                    <div class="lowerUnderground">
+                        <label id="custom2Label" class="label" for="custom2"></label>
+                        <input class="checkbox" type="checkbox" id="custom2">
+                        <input class="number" type="text" id="custom2Modifier">
+                        <p id="custom2ModifierUnit" class="unitLength">km</p>
+                        <br>
+                        <label for="custom2Value"></label>
+                        <input class="multiplicator" type="number" id="custom2Value" value="1">
+                        <p class="percentLabel">%</p>
+                    </div>
+                    
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section id="result">
+                <button id="finishHim" onclick="calculate()">Calculate</button>
+                <h2 id="resultLabel"></h2>
+                <p id="resultValue"></p>
         </div>
 
         <script src="script.js"></script>

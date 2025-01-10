@@ -1,3 +1,6 @@
+*{
+  font-family: Arial, sans-serif;
+}
 header {
   position: fixed;
   top: 0;
@@ -8,10 +11,15 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
   padding: 10px;
 }
-
 body {
   padding-top: 60px;
   font-size: 1.1rem;
+}
+select, input, button{
+  background-color: #e7e7e7;
+  color: black;
+  border: hidden;
+  border-radius: 15px;
 }
 
 [darkMode="false"] {
@@ -29,37 +37,23 @@ body {
   box-shadow: 0 5px 10px rgba(207, 207, 207, 0.5); 
   color: #cfcfcf;
 }
-[darkMode="true"] input {
-  border: none;
-  background-color: rgb(52, 52, 52);
-  color: #cfcfcf;
-}
-[darkMode="true"] input:focus {
-  border: none;
-  background-color: rgba(52, 52, 52);
-  color: #cfcfcf;
-}
-[darkMode="true"] button {
-  background-color: rgb(52, 52, 52);
-  color: #cfcfcf;
-}
-[darkMode="true"] select {
-  background-color: rgb(52, 52, 52);
-  color: #cfcfcf;
-}
 [darkMode="true"] #content {
   border: 1.5px solid #cfcfcf;
 }
 [darkMode="true"] #upperSettings {
   border-bottom: 1px solid #cfcfcf;
 }
+[darkMode="true"] #lowerSettings {
+  border-bottom: 1px solid #cfcfcf;
+}
+[darkMode="true"] select, [darkMode="true"] input, [darkMode = "true"] button{
+  background-color: rgb(52, 52, 52);
+  color: #cfcfcf;
+}
 [darkMode="true"] .lowerUnderground {
   border: 1.5px solid #cfcfcf;
 }
 
-*{
-  font-family: Arial, sans-serif;
-}
 .underground{
   border-radius: 15px;
   overflow: hidden;
@@ -68,23 +62,40 @@ body {
 .lowerUnderground{
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5em;
   grid-template-columns: 3fr 1fr auto 1fr;
   border: 1.5px solid black;
   border-radius: 0px 0px 15px 15px;
 }
 .lowerUnderground .label {
-  padding-left: 10px;
-  width: 7rem; /* Label nimmt den verfügbaren Platz ein */
-}
-.lowerUnderground input[type="number"]{
   flex: 1;
+  padding-left: 10px;
+  width: 7rem;
+}
+.number{
+  flex: 4;
   border: none;
   border-radius: 5px;
   padding: 0.3em;
 }
-.lowerUnderground .unit{
+.lowerUnderground .unitLength{
+  flex: 1;
   padding-right: 10px;
+}
+.multiplicator{
+  flex:1;
+  width: 1em;
+  flex-wrap: wrap;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em;
+}
+.percentLabel{
+  flex: 1;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  width:min-content;
 }
 
 
@@ -151,6 +162,7 @@ body {
   "swamp snow"
   "mountains extremeMountains"
   "custom1 custom2";
+  border-bottom: black solid 1.5px;
 }
 #roadPaved{
   grid-area: roadPaved;
@@ -191,6 +203,7 @@ body {
 #content section{
   padding: 10px;
 }
+
 #roadPavedImage{
   background-image: url(../img/pavedRoad.png);
   background-size: cover;
@@ -264,4 +277,8 @@ body {
   height: 8rem;
 }
 
-
+#finishHim{
+  font-size: x-large;
+  height: 2em;
+  width: 15%;
+}

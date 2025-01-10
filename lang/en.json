@@ -3,25 +3,39 @@
     "imperialSpeedUnit":"mph",
     "metricDistanceUnit":"km",
     "imperialDistanceUnit":"miles",
+    "unitMetric":"Metric",
+    "unitImperial":"Imperial",
     "darkModeButton":"Dark Mode",
     "headline": "DnD Travel Calculator",
-    "github": "More Informations about Features: ",
+    "github": "More Informations about Features: <a href=\"https://github.com/Datengeist/DnDTravelCalculator\">Github</a>",
     
     "travelDurationLabel" : "Travelduration per day",
     
     "travelTypeLabel" : "Type of traveling",
-    "walkingLight": "Walking (light)",
-    "walkingHeavy": "Walking (heavy)",
-    "horseLight": "Horse (light)",
-    "horseHeavy": "Horse (heavy)",
-    "carriageSmall": "Carriage (small)",
-    "carriageLarge": "Carriage (large)",
+    "walkingLight": "Walking (light) Factor:x1.0",
+    "walkingHeavy": "Walking (heavy) Factor:x0.9",
+    "horseLight": "Horse (light) Factor:x2.5",
+    "horseHeavy": "Horse (heavy) Factor:x1.9",
+    "carriageSmall": "Carriage (small) Factor:x1.5",
+    "carriageLarge": "Carriage (large) Factor:x1.2",
 
     "travelSpeedLabel" : "Speed of traveling",
-    "speedSlow": "Slow",
-    "speedNormal": "Normal",
-    "speedFast": "Fast",
-    "speedCustom": "Custom",
+
+    "metricSpeedSlow": "Slow (3.2 km/h)",
+    "metricSpeedSlowValue": 3.2,
+    "metricSpeedNormal": "Normal (4.8 km/h)",
+    "metricSpeedNormalValue": 4.8,
+    "metricSpeedFast": "Fast (6.4 km/h)",
+    "metricSpeedFastValue": 6.4,
+
+    "imperialSpeedSlow": "Slow (1.9 mph)",
+    "imperialSpeedSlowValue": 1.9,
+    "imperialSpeedNormal": "Normal (2.9 mph)",
+    "imperialSpeedNormalValue": 2.9,
+    "imperialSpeedFast": "Fast (3.9 mph)",
+    "imperialSpeedFastValue": 3.9,
+
+    "speedCustom": "Custom ",
     "customSpeedLabel": "Custom Speed",
 
     "travelDistanceLabel" : "Distance to travel",
@@ -37,6 +51,8 @@
     "mountainsLabel" : "Mountains",
     "extremMountainsLabel" : "Extrem Mountains",
     "custom1Label" : "Custom 1",
-    "custom2Label" : "Custom 2"
+    "custom2Label" : "Custom 2",
+
+    "travelDurationErr":"Please enter a valid travel duration"
 
 }

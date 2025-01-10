@@ -1,0 +1,42 @@
+{
+    "metricSpeedUnit":"km/h",
+    "imperialSpeedUnit":"mph",
+    "metricDistanceUnit":"km",
+    "imperialDistanceUnit":"Meilen",
+    "darkModeButton":"Dunkler Modus",
+    "headline": "DnD Weg berechner",
+    "github": "Mehr Informationen über Funktionen: ",
+    
+    "travelDurationLabel" : "Reisedauer am Tag",
+    
+    "travelTypeLabel" : "Art des Reisens",
+    "walkingLight": "Laufen (leicht)",
+    "walkingHeavy": "Laufen (schwer)",
+    "horseLight": "Pferd (leicht)",
+    "horseHeavy": "Pferd (schwer)",
+    "carriageSmall": "Kutsche (klein)",
+    "carriageLarge": "Kutsche (groß)",
+
+    "travelSpeedLabel" : "Geschwindigkeit des Reisens",
+    "speedSlow": "Langsam",
+    "speedNormal": "Normal",
+    "speedFast": "Schnell",
+    "speedCustom": "Benutzerdefiniert",
+    "customSpeedLabel": "Benutzerdefinierte Geschwindigkeit",
+
+    "travelDistanceLabel" : "Zu reisende Entfernung",
+
+    "roadPavedLabel" : "Straße gepflastert",
+    "roadUnpavedLabel" : "Straße nicht gepflastert",
+    "grasslandLabel" : "Grasland",
+    "forestLabel" : "Wald",
+    "jungleLabel" : "Dschungel",
+    "desertLabel" : "Wüste",
+    "swampLabel" : "Sumpf",
+    "snowLabel" : "Schnee",
+    "mountainsLabel" : "Berge",
+    "extremMountainsLabel" : "Extrem Berge",
+    "custom1Label" : "Benutzerdefiniert 1",
+    "custom2Label" : "Benutzerdefiniert 2"
+
+}

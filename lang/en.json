@@ -1,8 +1,13 @@
 {
+    "metricSpeedUnit":"km/h",
+    "imperialSpeedUnit":"mph",
+    "metricDistanceUnit":"km",
+    "imperialDistanceUnit":"miles",
+    "darkModeButton":"Dark Mode",
     "headline": "DnD Travel Calculator",
     "github": "More Informations about Features: ",
     
-    "travelDurationLavel" : "Travelduration per day (in Hours)",
+    "travelDurationLabel" : "Travelduration per day",
     
     "travelTypeLabel" : "Type of traveling",
     "walkingLight": "Walking (light)",
@@ -23,14 +28,14 @@
 
     "roadPavedLabel" : "Road Paved",
     "roadUnpavedLabel" : "Road Unpaved",
-    "GrasslandLabel" : "Grassland",
-    "ForestLabel" : "Forest",
-    "JungleLabel" : "Jungle",
-    "DesertLabel" : "Desert",
-    "SwampLabel" : "Swamp",
-    "SnowLabel" : "Snow",
-    "MountainsLabel" : "Mountains",
-    "ExtremMountainsLabel" : "Extrem Mountains",
+    "grasslandLabel" : "Grassland",
+    "forestLabel" : "Forest",
+    "jungleLabel" : "Jungle",
+    "desertLabel" : "Desert",
+    "swampLabel" : "Swamp",
+    "snowLabel" : "Snow",
+    "mountainsLabel" : "Mountains",
+    "extremMountainsLabel" : "Extrem Mountains",
     "custom1Label" : "Custom 1",
     "custom2Label" : "Custom 2"
 

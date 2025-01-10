@@ -1,143 +1,181 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>DnD Travel Calculator</title>
         <meta charset="utf-8">
-        <script src="script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body darkMode="true">
+        <header>
+            <div>
+                <button id="darkModeButton" onclick="toggleDarkMode()">d</button>
+                <select title="lang" id="langSelect">
+                    <option class="language" id="langEN" value="en">English</option>
+                    <option class="language" id="langDE" value="de">Deutsch</option>
+                </select>
+                <select title="unit" id="unitSelect">
+                    <option id="unitMetric" value="metric">Metric</option>
+                    <option id="unitImperial" value="imperial">Imperial</option>
+                </select>
+            </div>
+        </header>
+
         <h1 id="headline"></h1>
         <p id="github"></p>
-        <aside>
 
-        </aside>
         <div id="content">
         <section id="upperSettings">
-            <label id="travelDurationLavel" for="travelDuration"></label>
-            <input type="number" id="travelDuration"><br>
+            <label id="travelDurationLabel" for="travelDuration"></label>
+            <input type="number" id="travelDuration">
+            <p id="travelDurationUnit">h</p>
 
             <label id="travelTypeLabel" for="travelType"></label>
-            <select id="travelType">
+            <select title="travelType" id="travelType">
                 <option id="walkingLight" value="walkingLight"></option>
                 <option id="walkingHeavy" value="walkingHeavy"></option>
                 <option id="horseLight" value="horseLight"></option>
                 <option id="horseHeavy" value="horseHeavy"></option>
                 <option id="carriageSmall" value="carriageSmall"></option>
                 <option id="carriageLarge" value="carriageLarge"></option>
-            </select><br>
+            </select>
 
             <label id="travelSpeedLabel" for="travelSpeed"></label>
-            <select id="travelSpeed">
+            <select title="travelSpeed" id="travelSpeed">
                 <option id="speedSlow" value="speedSlow"></option>
                 <option id="speedNormal" value="speedNormal"></option>
                 <option id="speedFast" value="speedFast"></option>
                 <option id="speedCustom" value="speedCustom"></option>
             </select>
             <label id="customSpeedLabel" for="customSpeed"></label>
-            <input type="number" id="customSpeed"><br>
-
-            <label id="travelDistanceLabel" for="travelDistance"></label>
-            <input type="number" id="travelDistance"><br>
+            <input type="number" id="customSpeed">
+            <p id="customSpeedUnit" class="unit">km/h</p>
         </section>
 
         <section id="lowerSettings">
             
             <div id="roadPaved" class="underground">
-                <div id="roadPavedImage" class="bw-image" class="image"></div>
-                <label id="roadPavedLabel" class="label" for="roadPaved"></label>
-                <input type="checkbox" id="roadPaved">
-                <input type="number" id="roadPavedModifier">
-                <p id="roadPavedModifierUnit" class="unit"></p>
+                <div id="roadPavedImage" class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="roadPavedLabel" class="label" for="roadPaved"></label>
+                    <input class="checkbox" type="checkbox" id="roadPaved">
+                    <input class="number" type="number" id="roadPavedModifier">
+                    <p id="roadPavedModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="roadUnpaved" class="underground">
-                <div id="roadUnpavedImage" class="bw-image" class="image"></div>
-                <label id="roadUnpavedLabel" class="label" for="roadUnpaved"></label>
-                <input type="checkbox" id="roadUnpaved">
-                <input type="number" id="roadUnpavedModifier">
-                <p id="roadUnpavedModifierUnit" class="unit"></p>
+                <div id="roadUnpavedImage" class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="roadUnpavedLabel" class="label" for="roadUnpaved"></label>
+                    <input class="checkbox" type="checkbox" id="roadUnpaved">
+                    <input class="number" type="number" id="roadUnpavedModifier">
+                    <p id="roadUnpavedModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="grassland" class="underground">
-                <div id="grasslandImage" class="bw-image" class="image"></div>
-                <label id="grasslandLabel" class="label" for="grassland"></label>
-                <input type="checkbox" id="grassland">
-                <input type="number" id="grasslandModifier">
-                <p id="grasslandModifierUnit" class="unit"></p>
+                <div id="grasslandImage"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="grasslandLabel" class="label" for="grassland"></label>
+                    <input class="checkbox" type="checkbox" id="grassland">
+                    <input class="number" type="number" id="grasslandModifier">
+                    <p id="grasslandModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="forest" class="underground">
-                <div id="forestImage" class="bw-image" class="image"></div>
-                <label id="forestLabel" class="label" for="forest"></label>
-                <input type="checkbox" id="forest">
-                <input type="number" id="forestModifier">
-                <p id="forestModifierUnit" class="unit"></p>
+                <div id="forestImage"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="forestLabel" class="label" for="forest"></label>
+                    <input class="checkbox" type="checkbox" id="forest">
+                    <input class="number" type="number" id="forestModifier">
+                    <p id="forestModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="jungle" class="underground">
-                <div id="jungleImage" class="bw-image" class="image"></div>
-                <label id="jungleLabel" class="label" for="jungle"></label>
-                <input type="checkbox" id="jungle">
-                <input type="number" id="jungleModifier">
-                <p id="jungleModifierUnit" class="unit"></p>
+                <div id="jungleImage"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="jungleLabel" class="label" for="jungle"></label>
+                    <input class="checkbox" type="checkbox" id="jungle">
+                    <input class="number" type="number" id="jungleModifier">
+                    <p id="jungleModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="desert" class="underground">
-                <div id="desertImage" class="bw-image" class="image"></div>
-                <label id="desertLabel" class="label" for="desert"></label>
-                <input type="checkbox" id="desert">
-                <input type="number" id="desertModifier">
-                <p id="desertModifierUnit" class="unit"></p>
+                <div id="desertImage"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="desertLabel" class="label" for="desert"></label>
+                    <input class="checkbox" type="checkbox" id="desert">
+                    <input class="number" type="number" id="desertModifier">
+                    <p id="desertModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="swamp" class="underground">
-                <div id="swampImage" class="bw-image" class="image"></div>
-                <label id="swampLabel" class="label" for="swamp"></label>
-                <input type="checkbox" id="swamp">
-                <input type="number" id="swampModifier">
-                <p id="swampModifierUnit" class="unit"></p>
+                <div id="swampImage"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="swampLabel" class="label" for="swamp"></label>
+                    <input class="checkbox" type="checkbox" id="swamp">
+                    <input class="number" type="number" id="swampModifier">
+                    <p id="swampModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="snow" class="underground">
-                <div id="snowImage" class="bw-image" class="image"></div>
-                <label id="snowLabel" class="label" for="snow"></label>
-                <input type="checkbox" id="snow">
-                <input type="number" id="snowModifier">
-                <p id="snowModifierUnit" class="unit"></p>
+                <div id="snowImage"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="snowLabel" class="label" for="snow"></label>
+                    <input class="checkbox" type="checkbox" id="snow">
+                    <input class="number" type="number" id="snowModifier">
+                    <p id="snowModifierUnit" class="unit">km</p>
+                </div>
             </div> 
 
             <div id="mountains" class="underground">
-                <div id="mountainsImage" class="bw-image" class="image"></div>
-                <label id="mountainsLabel" class="label" for="mountains"></label>
-                <input type="checkbox" id="mountains">
-                <input type="number" id="mountainsModifier">
-                <p id="mountainsModifierUnit" class="unit"></p>
+                <div id="mountainsImage"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="mountainsLabel" class="label" for="mountains"></label>
+                    <input class="checkbox" type="checkbox" id="mountains">
+                    <input class="number" type="number" id="mountainsModifier">
+                    <p id="mountainsModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="extremMountains" class="underground">
-                <div id="extremMountainsImage" class="bw-image" class="image"></div>
-                <label id="extremMountainsLabel" class="label" for="extremMountains"></label>
-                <input type="checkbox" id="extremMountains">
-                <input type="number" id="extremMountainsModifier">
-                <p id="extremMountainsModifierUnit" class="unit"></p>
+                <div id="extremMountainsImage"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="extremMountainsLabel" class="label" for="extremMountains"></label>
+                    <input class="checkbox" type="checkbox" id="extremMountains">
+                    <input class="number" type="number" id="extremMountainsModifier">
+                    <p id="extremMountainsModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="custom1" class="underground">
-                <div id="custom1Image" class="bw-image" class="image"></div>
-                <label id="custom1Label" class="label" for="custom1"></label>
-                <input type="checkbox" id="custom1">
-                <input type="number" id="custom1Modifier">
-                <p id="custom1ModifierUnit" class="unit"></p>
+                <div id="custom1Image"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="custom1Label" class="label" for="custom1"></label>
+                    <input class="checkbox" type="checkbox" id="custom1">
+                    <input class="number" type="number" id="custom1Modifier">
+                    <p id="custom1ModifierUnit" class="unit">km</p>
+                </div>
             </div>
 
             <div id="custom2" class="underground">
-                <div id="custom2Image" class="bw-image" class="image"></div>
-                <label id="custom2Label" class="label" for="custom2"></label>
-                <input type="checkbox" id="custom2">
-                <input type="number" id="custom2Modifier">
-                <p id="custom2ModifierUnit" class="unit"></p>
+                <div id="custom2Image"  class="image"></div>
+                <div class="lowerUnderground">
+                    <label id="custom2Label" class="label" for="custom2"></label>
+                    <input class="checkbox" type="checkbox" id="custom2">
+                    <input class="number" type="number" id="custom2Modifier">
+                    <p id="custom2ModifierUnit" class="unit">km</p>
+                </div>
             </div>
         </section>
         </div>
 
+        <script src="script.js"></script>
     </body>

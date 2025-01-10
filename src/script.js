@@ -4,6 +4,7 @@ const translations ={
 }
 const images = Array.from(document.getElementsByClassName('image'));
 const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+let lang = 'en';
 
 function loadTranslations(lang){
     fetch(`../lang/${lang}.json`)
@@ -24,5 +25,30 @@ function updateContent(lang){
     });
 }
 
+function toggleDarkMode(){
+    document.body.setAttribute('darkMode', document.body.getAttribute('darkMode') === 'false');
+    
+}
 
-loadTranslations('en');
+document.getElementById('langSelect').addEventListener('change', (event) => {
+    lang = event.target.value;
+    loadTranslations(lang);
+});
+//unitSelect
+function updateUnits(unitType, lang) {
+    const speedUnit = translations[lang][`${unitType}SpeedUnit`];
+    const distanceUnit = translations[lang][`${unitType}DistanceUnit`];
+    
+    document.querySelectorAll('.unit').forEach(label => {
+        label.textContent = distanceUnit;
+    });
+}
+
+unitSelect.addEventListener('change', (event) => {
+    const unitType = unitSelect.value;
+    updateUnits(unitType, lang);
+});
+  
+
+
+loadTranslations(lang);

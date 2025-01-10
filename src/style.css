@@ -1,0 +1,312 @@
+*{
+  font-family: Arial, sans-serif;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  padding: 10px;
+}
+header *{
+  border: none;
+  border-radius: 5px;
+  height: 2em;
+  padding-left: 10px;
+}
+body {
+  padding-top: 2em;
+  font-size: 1.1rem;
+}
+#headline{
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+#github{
+  font-size: small;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+select, input, button{
+  background-color: #e7e7e7;
+  color: black;
+  border: hidden;
+  border-radius: 15px;
+}
+a{
+  color: black;
+}
+
+[darkMode="false"] {
+  background-color: white;
+  color: black;
+}
+
+[darkMode="true"] {
+  background-color: rgb(26, 26, 26);
+  color: #cfcfcf;
+}
+[darkMode="true"] header {
+  border: none;
+  background-color: rgb(26, 26, 26);
+  box-shadow: 0 5px 10px rgba(207, 207, 207, 0.5); 
+  color: #cfcfcf;
+}
+[darkMode="true"] #content {
+  border: 1.5px solid #cfcfcf;
+}
+[darkMode="true"] #upperSettings {
+  border-bottom: 1px solid #cfcfcf;
+}
+[darkMode="true"] #lowerSettings {
+  border-bottom: 1px solid #cfcfcf;
+}
+[darkMode="true"] select, [darkMode="true"] input, [darkMode = "true"] button{
+  background-color: rgb(52, 52, 52);
+  color: #cfcfcf;
+}
+[darkMode="true"] .lowerUnderground {
+  border: 1.5px solid #cfcfcf;
+}
+[darkMode="true"] a {
+  color: #cfcfcf;
+}
+
+.underground{
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 5px;
+}
+.lowerUnderground{
+  display: grid;
+  gap: 5px;
+  grid-template-areas:
+  "label label checkbox number number number unitLength"
+  "multiplicatorLabel multiplicator multiplicator multiplicator multiplicator multiplicator percentLabel"
+  "result result result result result result result";
+  border: 1.5px solid black;
+  border-radius: 0px 0px 15px 15px;
+  padding-left: 10px;
+  align-items: center;
+}
+.label{
+  grid-area: label;
+  width: 8.5em;
+}
+.checkbox{
+  grid-area: checkbox;
+  width: 1.5em;
+  height: 1.5em;
+}
+.number{
+  grid-area: number;
+  height: 2em;
+}
+.unitLength{
+  grid-area: unitLength;
+  margin-right: 10px;
+}
+.multiplicatorLabel{
+  grid-area: multiplicatorLabel;
+  display: none;
+}
+.multiplicator{
+  grid-area: multiplicator;
+  display: none;
+}
+.percentLabel{
+  grid-area: percentLabel;
+  display: none;
+}
+.result{
+  grid-area: result;
+  display: none;
+}
+
+
+
+#content{
+  margin-left: 12.5%;
+  width: 75%;
+  border: 1.5px solid black;
+  border-radius: 15px;
+  overflow: hidden;
+}
+#upperSettings{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border-bottom: 1.5px solid black;
+}
+#upperSettings *{
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em;
+}
+#upperSettings #travelDurationLabel{
+  grid-area: 1 / 1 / span 1 / span 1;
+  text-align: right;
+}
+#upperSettings #travelDuration{
+  grid-area: 1 / 2 / span 1 / span 2;
+}
+#upperSettings #travelDurationUnit{
+  grid-area: 1 / 4 / span 1 / span 1;
+}
+#upperSettings #travelTypeLabel{
+  grid-area: 2 / 1 / span 1 / span 1;
+  text-align: right;
+}
+#upperSettings #travelType{
+  grid-area: 2 / 2 / span 1 / span 2;
+}
+#upperSettings #travelSpeedLabel{
+  grid-area: 3 / 1 / span 1 / span 1;
+  text-align: right;
+}
+#upperSettings #travelSpeed{
+  grid-area: 3 / 2 / span 1 / span 1;
+}
+#upperSettings #customSpeedLabel{
+  grid-area: 3 / 3 / span 1 / span 1;
+  text-align: right;
+}
+#upperSettings #customSpeed{
+  grid-area: 3 / 4 / span 1 / span 1;
+}
+#upperSettings #customSpeedUnit{
+  grid-area: 3 / 5 / span 3 / span 1;
+}
+
+#lowerSettings{
+  display: grid;
+  grid-template-areas: 
+  "roadPaved roadUnpaved"
+  "grassland forest"
+  "jungle desert"
+  "swamp snow"
+  "mountains extremeMountains"
+  "custom1 custom2";
+  border-bottom: black solid 1.5px;
+}
+#roadPaved{
+  grid-area: roadPaved;
+}
+#roadUnpaved{
+  grid-area: roadUnpaved;
+}
+#grassland{
+  grid-area: grassland;
+}
+#forest{
+  grid-area: forest;
+}
+#jungle{
+  grid-area: jungle;
+}
+#desert{
+  grid-area: desert;
+}
+#swamp{
+  grid-area: swamp;
+}
+#snow{
+  grid-area: snow;
+}
+#mountains{
+  grid-area: mountains;
+}
+#extremeMountains{
+  grid-area: extremeMountains;
+}
+#custom1{
+  grid-area: custom1;
+}
+#custom2{
+  grid-area: custom2;
+}
+#content section{
+  padding: 10px;
+}
+
+#roadPavedImage{
+  background-image: url(../img/pavedRoad.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#roadUnpavedImage{
+  background-image: url(../img/unpavedRoad.png);
+  background-size: cover;
+  background-position: bottom;
+  height: 8rem;
+}
+#grasslandImage{
+  background-image: url(../img/grassland.png);
+  background-size: cover;
+  background-position: bottom;
+  height: 8rem;
+}
+#forestImage{
+  background-image: url(../img/forest.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#jungleImage{
+  background-image: url(../img/jungle.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#desertImage{
+  background-image: url(../img/desert.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#swampImage{
+  background-image: url(../img/swamp.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#snowImage{
+  background-image: url(../img/snow.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#mountainsImage{
+  background-image: url(../img/mountains.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#extremMountainsImage{
+  background-image: url(../img/extremeMountains.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#custom1Image{
+  background-image: url(../img/custom.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+#custom2Image{
+  background-image: url(../img/custom.png);
+  background-size: cover;
+  background-position: center;
+  height: 8rem;
+}
+
+#finishHim{
+  font-size: x-large;
+  height: 2em;
+  width: 15%;
+}

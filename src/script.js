@@ -6,6 +6,33 @@ document.addEventListener('DOMContentLoaded', () => {
     //class="percentLabel"
     document.querySelector('#custom1 .percentLabel').setAttribute('style', 'display: block');
     document.querySelector('#custom2 .percentLabel').setAttribute('style', 'display: block');
+
+    const urlParams = new URLSearchParams(window.location.search); 
+    const langTag = urlParams.get('lang'); 
+    const unitTag = urlParams.get('unit');
+    if (langTag) { 
+        document.getElementById('langSelect').value = langTag;
+        loadTranslations(langTag);
+    }
+    if (unitTag) { 
+        unitSelect.value = unitTag;
+        if(langTag){
+            loadTranslations(langTag);
+            updateUnits(unitTag, langTag);
+        }else{
+            loadTranslations('en')
+            updateUnits(unitTag, 'en');
+        }
+    }else{
+        if(langTag){
+            loadTranslations(langTag);
+            updateUnits('imperial', langTag);
+        }else{
+            loadTranslations('en')
+            updateUnits('imperial', 'en');
+        }
+    }
+    
 });
 
 const translations ={
@@ -18,8 +45,8 @@ let lang = 'en';
 
 
 //Language Updater
-function loadTranslations(lang){
-    fetch(`../lang/${lang}.json`)
+async function loadTranslations(lang){
+    await fetch(`../lang/${lang}.json`)
         .then(response => response.json())
         .then(data => {
             translations[lang] = data; 
@@ -49,12 +76,11 @@ function toggleDarkMode(){
 }
 
 //Units Update
-function updateUnits(unitType, lang) {
-    loadTranslations(lang);
-    if (!translations[lang]) return;
+async function updateUnits(unitType, lang) {
+    
+    await loadTranslations(lang);
     const speedUnit = translations[lang][`${unitType}SpeedUnit`];
     const distanceUnit = translations[lang][`${unitType}DistanceUnit`];
-    
     document.querySelectorAll('.unitLength').forEach(label => {
         label.textContent = distanceUnit;
     });

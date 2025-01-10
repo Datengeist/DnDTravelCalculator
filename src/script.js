@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#custom2 .multiplicatorLabel').setAttribute('style', 'display: block');
     document.querySelector('#custom1 .multiplicator').setAttribute('style', 'display: block; height: 2em;');
     document.querySelector('#custom2 .multiplicator').setAttribute('style', 'display: block; height: 2em;');
-    //class="percentLabel"
     document.querySelector('#custom1 .percentLabel').setAttribute('style', 'display: block');
     document.querySelector('#custom2 .percentLabel').setAttribute('style', 'display: block');
 
@@ -24,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateUnits(unitTag, 'en');
         }
     }else{
+        unitSelect.value = 'imperial';
         if(langTag){
             loadTranslations(langTag);
             updateUnits('imperial', langTag);
@@ -221,12 +221,12 @@ function calculateResults(values){
         resultDisplay.innerText = `${totalDays} ${translations[lang].days} ${totalHours} ${translations[lang].hours}`;
     }
 
+    let noteDisplays = document.querySelectorAll('.DCInfo')
+    noteDisplays.forEach(noteDisplay => {
+    noteDisplay.setAttribute('hidden', '');
+    });
     if(values.travelDuration >= 9){
         if(totalHours >= 9 || totalDays >= 1){
-            let noteDisplays = document.querySelectorAll('.DCInfo')
-            noteDisplays.forEach(noteDisplay => {
-                noteDisplay.setAttribute('hidden', '');
-            });
             if(totalDays >= 1){
                 for(let i = 0; i < values.travelDuration-8; i++){
                     noteDisplays[i].removeAttribute('hidden');

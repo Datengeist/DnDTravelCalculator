@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const langTag = urlParams.get('lang'); 
     const unitTag = urlParams.get('unit');
     if (langTag) { 
+        lang = langTag;
         document.getElementById('langSelect').value = langTag;
         loadTranslations(langTag);
     }
     if (unitTag) { 
         unitSelect.value = unitTag;
         if(langTag){
-            loadTranslations(langTag);
             updateUnits(unitTag, langTag);
         }else{
             loadTranslations('en')
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }else{
         unitSelect.value = 'imperial';
         if(langTag){
-            loadTranslations(langTag);
             updateUnits('imperial', langTag);
         }else{
             loadTranslations('en')
@@ -41,7 +40,7 @@ const translations ={
 }
 const images = Array.from(document.getElementsByClassName('image'));
 const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
-let lang = 'en';
+let lang = document.getElementById('langSelect').value;
 
 
 //Language Updater

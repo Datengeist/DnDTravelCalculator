@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(langTag){
             updateUnits(unitTag, langTag);
         }else{
-            loadTranslations('en')
             updateUnits(unitTag, 'en');
         }
     }else{
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(langTag){
             updateUnits('imperial', langTag);
         }else{
-            loadTranslations('en')
             updateUnits('imperial', 'en');
         }
     }
@@ -98,6 +96,7 @@ async function updateUnits(unitType, lang) {
     const fastElement = document.querySelector('[value="speedFast"]');
     fastElement.setAttribute('id', `${unitType}SpeedFast`);
     fastElement.setAttribute('speed', translations[lang][`${unitType}SpeedFastValue`]);
+    await loadTranslations(lang);
 }
 unitSelect.addEventListener('change', (event) => {
     updateUnits(unitSelect.value, lang);

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search); 
     const langTag = urlParams.get('lang'); 
     const unitTag = urlParams.get('unit');
+    const smallTag = urlParams.get('small');
     if (langTag) { 
         lang = langTag;
         document.getElementById('langSelect').value = langTag;
@@ -28,6 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             updateUnits('imperial', 'en');
         }
+    }
+    if(smallTag){
+        noImage();
+        console.log('small');
+        
     }
     
 });
@@ -136,6 +142,61 @@ function gatherValues(){
 function splitExpression(expression) { 
     return expression.split('+').map(item => parseFloat(item.trim())).filter(item => !isNaN(item));
 }
+
+function noImage(){
+    const images = Array.from(document.getElementsByClassName('image'));
+    const lowerUndergrounds = Array.from(document.getElementsByClassName('lowerUnderground'));
+    const lowerSettings = document.getElementById('lowerSettings');
+    const content = document.getElementById('content');
+    const body = document.body;
+
+
+    images.forEach(image => {
+        if(image.getAttribute('style') !== 'display: none'){
+            image.setAttribute('style', 'display: none');
+        }else{
+            image.setAttribute('style', 'display: block');
+        }
+    });
+
+
+    lowerUndergrounds.forEach(lowerUnderground => {
+        if(lowerUnderground.getAttribute('style') !== 'border-radius: 15px 15px 15px 15px;'){
+            lowerUnderground.setAttribute('style', 'border-radius: 15px 15px 15px 15px;');
+        }else{
+            lowerUnderground.setAttribute('style', 'border-radius: 0px 0px 15px 15px;');
+        }
+    });
+
+
+    if(lowerSettings.getAttribute('style') !== `grid-template-areas: 
+  "roadPaved roadUnpaved grassland"
+  "forest jungle desert"
+  "swamp snow mountains"
+  "extremeMountains custom1 custom2";`){
+        lowerSettings.setAttribute('style',`grid-template-areas: 
+  "roadPaved roadUnpaved grassland"
+  "forest jungle desert"
+  "swamp snow mountains"
+  "extremeMountains custom1 custom2";`);
+    }else{
+        lowerSettings.setAttribute('style', `grid-template-areas: 
+  "roadPaved roadUnpaved"
+  "grassland forest"
+  "jungle desert"
+  "swamp snow"
+  "mountains extremeMountains"
+  "custom1 custom2";`);
+    }
+
+    
+    if(content.getAttribute('style') !== `margin-left: 5%; width: 90%;`){
+        content.setAttribute('style', `margin-left: 5%; width: 90%;`);
+    }else{
+        content.setAttribute('style', `margin-left: 12.5%; width: 75%;`);
+    }
+}
+
 
 //Test Values
 function testValues(values){

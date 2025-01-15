@@ -1,6 +1,7 @@
 # DnD Travel Calculator
 
 The DnD Travel Calculator is a useful tool for Dungeons & Dragons players to calculate travel time based on various factors. The website can be run locally and does not require a server as there is no backend.
+The link to the Calculator is https://datengeist.github.io/DnDTravelCalculator/src/
 
 ## Installation
 

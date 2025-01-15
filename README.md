@@ -9,7 +9,7 @@ The link to the Calculator is https://datengeist.github.io/DnDTravelCalculator/s
     ```bash
     git clone https://github.com/Datengeist/DnDTravelCalculator.git
     ```
-2. Open the `index.html` file in the `en` folder in your preferred web browser.
+2. Open the `index.html` file in the `src` folder in your preferred web browser.
 
 ## Usage
 

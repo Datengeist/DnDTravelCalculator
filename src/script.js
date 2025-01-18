@@ -246,7 +246,7 @@ function calculateResults(values){
         if(values.undergroundArray[i]){
             result[i] = new Array(values.undergroundLength[i].length);
             for(let j = 0; j < values.undergroundLength[i].length; j++){
-                let allHours = (values.undergroundLength[i][j]/values.customSpeed)*(1/(values.undergroundMultiplicator[i]/100)) * values.travelTypeMultiplicator;
+                let allHours = (values.undergroundLength[i][j]/(values.customSpeed*values.travelTypeMultiplicator))*(1/(values.undergroundMultiplicator[i]/100));
                 totalHours += allHours;
                 let days = Math.floor(allHours/values.travelDuration);
                 let hours = (allHours - days*values.travelDuration).toFixed(2);
